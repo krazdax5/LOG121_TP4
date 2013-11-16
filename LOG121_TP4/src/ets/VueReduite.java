@@ -1,13 +1,12 @@
 package ets;
 
 /**
- *
+ * Patron : Immutable
  *
  *          Historique des modifications
  ***************************************************
  * @author
  * 2013-11-
  */
-public class FenetrePrincipale {
-
+public class VueReduite {
 }

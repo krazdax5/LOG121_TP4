@@ -8,6 +8,5 @@ package ets;
  * @author
  * 2013-11-
  */
-public class FenetrePrincipale {
-
+public class Perspective {
 }
