@@ -9,4 +9,7 @@ package ets.commande;
  * 2013-11-
  */
 public interface InterfaceCommande {
+
+    public void executer();
+
 }
