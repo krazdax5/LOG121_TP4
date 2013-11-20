@@ -4,7 +4,7 @@
     <list default="true" id="7a217664-ba05-4574-8bd9-6285f36d8460" name="Default" comment="" />
     <ignored path="LOG121_TP4.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/FenetrePrincipale.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384570558736" ignored="false" />
+    <file path="/FenetrePrincipale.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384911189811" ignored="false" />
     <file path="/fragment.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384568734227" ignored="false" />
     <file path="/FenetrePrincipaleTest.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384568826822" ignored="false" />
     <file path="/NullImage.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384571006929" ignored="false" />
@@ -14,9 +14,10 @@
     <file path="/Zoom.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384570778255" ignored="false" />
     <file path="/Undo.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384571064260" ignored="false" />
     <file path="/Redo.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384571057092" ignored="false" />
-    <file path="/Perspective.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384570996328" ignored="false" />
+    <file path="/Perspective.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384909403349" ignored="false" />
     <file path="/InterfaceImage.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384571020520" ignored="false" />
     <file path="/VueReduite.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384571122547" ignored="false" />
+    <file path="/VueActive2.java" changelist="7a217664-ba05-4574-8bd9-6285f36d8460" time="1384909239508" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,34 +81,36 @@
       <file leaf-file-name="Perspective.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ets/Perspective.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="2" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
+            <state line="19" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Subject.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ets/Subject.java">
+      <file leaf-file-name="FenetrePrincipale.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ets/FenetrePrincipale.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="3" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
+            <state line="22" column="0" selection-start="469" selection-end="469" vertical-scroll-proportion="0.6776181">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GestionCommande.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ets/GestionCommande.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="0" selection-start="14" selection-end="144" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Undo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ets/commande/Undo.java">
+      <file leaf-file-name="MemoireCommandes.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ets/MemoireCommandes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VueReduite.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ets/VueReduite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="192" selection-end="192" vertical-scroll-proportion="0.28213167">
+            <state line="12" column="0" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -122,28 +125,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Redo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ets/commande/Redo.java">
+      <file leaf-file-name="Copie.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ets/commande/Copie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="19" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
+            <state line="12" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Move.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ets/commande/Move.java">
+      <file leaf-file-name="Colle.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ets/commande/Colle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="28" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
+            <state line="9" column="3" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NullImage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ets/NullImage.java">
+      <file leaf-file-name="Deplacer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ets/commande/Deplacer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="22" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
+            <state line="14" column="0" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -158,10 +161,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Image.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ets/Image.java">
+      <file leaf-file-name="InterfaceCommande.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ets/commande/InterfaceCommande.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="22" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
+            <state line="10" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -177,30 +180,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/ets/GestionCommandes.java" />
-        <option value="$PROJECT_DIR$/src/ets/InterfaceCommande.java" />
-        <option value="$PROJECT_DIR$/src/ets/FenetrePrincipale.java" />
-        <option value="$PROJECT_DIR$/src/ets/Observer.java" />
-        <option value="$PROJECT_DIR$/src/ets/Subject.java" />
-        <option value="$PROJECT_DIR$/src/ets/Move.java" />
-        <option value="$PROJECT_DIR$/src/ets/Zoom.java" />
         <option value="$PROJECT_DIR$/src/ets/Undo.java" />
         <option value="$PROJECT_DIR$/src/ets/Redo.java" />
-        <option value="$PROJECT_DIR$/src/ets/Perspective.java" />
         <option value="$PROJECT_DIR$/src/ets/NullImage.java" />
         <option value="$PROJECT_DIR$/src/ets/InterfaceImage.java" />
         <option value="$PROJECT_DIR$/src/ets/Image.java" />
         <option value="$PROJECT_DIR$/src/ets/commande/Redo.java" />
         <option value="$PROJECT_DIR$/src/ets/commande/Undo.java" />
         <option value="$PROJECT_DIR$/src/ets/VueReduite.java" />
+        <option value="$PROJECT_DIR$/src/ets/commande/MemoireCommandes.java" />
+        <option value="$PROJECT_DIR$/src/ets/VueActive2.java" />
+        <option value="$PROJECT_DIR$/src/ets/VueActive1.java" />
+        <option value="$PROJECT_DIR$/src/ets/Perspective.java" />
+        <option value="$PROJECT_DIR$/src/ets/FenetrePrincipale.java" />
+        <option value="$PROJECT_DIR$/src/ets/MemoireCommandes.java" />
+        <option value="$PROJECT_DIR$/src/ets/commande/Colle.java" />
+        <option value="$PROJECT_DIR$/src/ets/commande/Copie.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="22" />
-    <option name="width" value="1420" />
-    <option name="height" value="809" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -229,7 +230,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -304,11 +304,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="reference.idesettings.quicklists" />
@@ -316,11 +318,12 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -330,7 +333,7 @@
       <recent name="tests" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FenetrePrincipaleTest">
+  <component name="RunManager" selected="Application.FenetrePrincipale">
     <configuration default="false" name="FenetrePrincipaleTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="LOG121_TP4" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -349,6 +352,22 @@
       </option>
       <envs />
       <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="FenetrePrincipale" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="ets.FenetrePrincipale" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="LOG121_TP4" />
+      <envs />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -441,12 +460,14 @@
       <patterns />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JUnit.FenetrePrincipaleTest" />
+      <item index="1" class="java.lang.String" itemvalue="Application.FenetrePrincipale" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.FenetrePrincipaleTest" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Application.FenetrePrincipale" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.FenetrePrincipaleTest" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -464,7 +485,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="22" width="1420" height="809" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -475,16 +496,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2496361" sideWeight="0.670537" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32946298" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24605452" sideWeight="0.6708229" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32917705" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -554,84 +575,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ets/FenetrePrincipale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/FenetrePrincipale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="14" selection-end="144" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/GestionCommande.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/commande/InterfaceCommande.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/VueActive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/Observer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/commande/Move.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="28" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/commande/Zoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="46" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/Perspective.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="2" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ets/NullImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="22" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/InterfaceImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="22" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
           <folding />
@@ -645,24 +589,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/commande/Redo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ets/commande/Undo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ets/VueReduite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="192" selection-end="192" vertical-scroll-proportion="0.28213167">
+        <state line="12" column="0" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/VueActive2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="226" selection-end="438" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/VueActive1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/Perspective.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../CURSUS/Hiver 2013/INF111 - JAVA/TP3/workspace TP3/AnimationsGUI/src/Animation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/InterfaceImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="22" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/GestionCommande.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="14" selection-end="144" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/MemoireCommandes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/commande/Colle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="3" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/commande/Copie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/commande/Deplacer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/commande/InterfaceCommande.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/commande/Zoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="46" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ets/FenetrePrincipale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="469" selection-end="469" vertical-scroll-proportion="0.6776181">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

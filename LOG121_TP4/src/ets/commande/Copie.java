@@ -1,4 +1,4 @@
-package ets;
+package ets.commande;
 
 /**
  *
@@ -8,5 +8,5 @@ package ets;
  * @author
  * 2013-11-
  */
-public class VueActive {
+public class Copie {
 }

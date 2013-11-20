@@ -1,14 +1,12 @@
-package ets.commande;
-
-import ets.commande.InterfaceCommande;
+package ets;
 
 /**
- * Patron : Memento
+ *
  *
  *          Historique des modifications
  ***************************************************
  * @author
  * 2013-11-
  */
-public class Redo implements InterfaceCommande {
+public class MemoireCommandes {
 }

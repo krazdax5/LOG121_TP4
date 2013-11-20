@@ -1,5 +1,7 @@
 package ets;
 
+import java.util.Observable;
+
 /**
  *
  *
@@ -8,5 +10,10 @@ package ets;
  * @author
  * 2013-11-
  */
-public class Perspective {
+public class Perspective extends Observable {
+
+    @Override
+    public void notifyObservers() {
+
+    }
 }

@@ -1,7 +1,5 @@
 package ets.commande;
 
-import ets.commande.InterfaceCommande;
-
 /**
  *
  *
@@ -10,5 +8,5 @@ import ets.commande.InterfaceCommande;
  * @author
  * 2013-11-
  */
-public class Move implements InterfaceCommande {
+public class Colle {
 }

@@ -1,4 +1,6 @@
-package ets;
+package ets.commande;
+
+import ets.commande.InterfaceCommande;
 
 /**
  *
@@ -8,5 +10,5 @@ package ets;
  * @author
  * 2013-11-
  */
-public interface Observer {
+public class Deplacer implements InterfaceCommande {
 }
