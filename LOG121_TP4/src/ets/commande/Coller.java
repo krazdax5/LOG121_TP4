@@ -1,7 +1,5 @@
 package ets.commande;
 
-import ets.commande.InterfaceCommande;
-
 /**
  *
  *
@@ -10,8 +8,7 @@ import ets.commande.InterfaceCommande;
  * @author
  * 2013-11-
  */
-public class Zoom implements InterfaceCommande {
-
+public class Coller implements InterfaceCommande {
     @Override
     public void executer() {
         //To change body of implemented methods use File | Settings | File Templates.

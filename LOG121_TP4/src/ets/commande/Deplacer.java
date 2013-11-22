@@ -15,4 +15,9 @@ public class Deplacer implements InterfaceCommande {
     public void executer() {
         //To change body of implemented methods use File | Settings | File Templates.
     }
+
+    @Override
+    public void defaire() {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
