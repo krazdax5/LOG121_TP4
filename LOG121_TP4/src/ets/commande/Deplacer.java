@@ -11,4 +11,8 @@ import ets.commande.InterfaceCommande;
  * 2013-11-
  */
 public class Deplacer implements InterfaceCommande {
+    @Override
+    public void executer() {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

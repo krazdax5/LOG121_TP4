@@ -61,7 +61,7 @@ public class FenetrePrincipale implements Runnable {
             menuFichier.setText("Fichier");
 
             JMenuItem ouvrir = new JMenuItem();
-            ouvrir.setText("Ouvrir Image...");
+            ouvrir.setText("Ouvrir ImageConcrete...");
             ouvrir.setAccelerator(KeyStroke.getKeyStroke(
                     KeyEvent.VK_O, Toolkit.getDefaultToolkit().
                     getMenuShortcutKeyMask()));

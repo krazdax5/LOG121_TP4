@@ -1,5 +1,7 @@
 package ets;
 
+import java.awt.Image;
+
 /**
  * Patron : NullObject
  *
@@ -8,5 +10,5 @@ package ets;
  * @author
  * 2013-11-
  */
-public interface InterfaceImage {
+public interface IImage {
 }
