@@ -30,15 +30,6 @@ public class FenetrePrincipale implements Runnable {
     Controlleur controlleur = new Controlleur();
 
 
-    public static void main(String args[]) {
-
-        FenetrePrincipale applicationImages = new FenetrePrincipale();
-
-        Thread t = new Thread(applicationImages);
-
-        t.start();
-    }
-
     @Override
     public void run() {
 

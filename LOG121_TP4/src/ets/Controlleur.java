@@ -16,6 +16,15 @@ public class Controlleur {
     VueReduite vignette;
     ImageConcrete image;
 
+    public static void main(String args[]) {
+
+        FenetrePrincipale applicationImages = new FenetrePrincipale();
+
+        Thread t = new Thread(applicationImages);
+
+        t.start();
+    }
+
 
     public void changerImage(String nouvelleImage) {
         this.image.setImage(nouvelleImage);
