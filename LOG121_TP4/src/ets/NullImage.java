@@ -10,7 +10,7 @@ import java.awt.*;
  * @author
  * 2013-11-
  */
-public class NullImage implements IImage {
+public class NullImage  implements IImage {
     private Image theImage;
 
     public Image getTheImage() {

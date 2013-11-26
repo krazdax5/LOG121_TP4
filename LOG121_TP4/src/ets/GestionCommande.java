@@ -11,7 +11,7 @@ package ets;
 public class GestionCommande {
 
     public void zommer(Perspective perspective, int hauteur, int largeur){
-
+        
     }
     public void deplacer(Perspective perspective, int centre) {
 
