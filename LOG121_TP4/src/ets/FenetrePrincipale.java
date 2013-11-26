@@ -93,7 +93,11 @@ public class FenetrePrincipale implements Runnable {
 
             JTabbedPane tabbedPane = new JTabbedPane();
 
-            imageConcrete = ImageConcrete.createImage("/Users/Mathieu/Desktop/image1.jpg");
+//            imageConcrete = ImageConcrete.createImage("/Users/Mathieu/Desktop/image1.jpg");
+
+            String workingDir = System.getProperty("user.dir");
+
+            imageConcrete = ImageConcrete.createImage(workingDir+"/src/ets/res/img/image1.jpg");
 
             int hauteur = imageConcrete.getTheImage().getHeight(null);
             int largeur = imageConcrete.getTheImage().getWidth(null);
