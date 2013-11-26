@@ -2,6 +2,8 @@ package ets;
 
 import java.awt.*;
 import java.io.File;
+import java.util.Observable;
+import java.util.Observer;
 import javax.imageio.ImageIO;
 
 /**
@@ -9,15 +11,17 @@ import javax.imageio.ImageIO;
  *
  *          Historique des modifications
  ***************************************************
- * @author
+ * @author Charles Levesque
  * 2013-11-
+ * @author Mathieu Lachance LACM14059305
+ * 2013-11-25 Ajout de la methode setImage() et rendre Observable
  */
-public class ImageConcrete implements IImage {
+public class ImageConcrete extends Observable implements IImage {
+
     private Image theImage = null;
-    private String imageMeganeFox = "/Users/charleslevesque/git_workspace/LOG121_TP4/LOG121_TP4/src/ets/res/img/megan_fox.png";
 
     /**
-     * Simple accesseur d'un image.
+     * Simple accesseur d'une image.
      * @return L'image de l'API Java standard.
      */
     public Image getTheImage() {
@@ -27,16 +31,23 @@ public class ImageConcrete implements IImage {
     /**
      * M&eactue;thode priv&eacute;
      */
-    private ImageConcrete(){
+    private ImageConcrete(String adresse){
         try{
-            File sourceImage = new File(imageMeganeFox);
+            File sourceImage = new File(adresse);
             theImage = ImageIO.read(sourceImage);
         } catch(Exception ex){
             ex.printStackTrace();
         }
     }
 
-    public static ImageConcrete createImage() {
-        return new ImageConcrete();
+    public static ImageConcrete createImage(String adresse) {
+        return new ImageConcrete(adresse);
     }
+
+    public void setImage(String adresse) {
+        theImage = new ImageConcrete(adresse).getTheImage();
+        this.setChanged();
+        this.notifyObservers();
+    }
+
 }

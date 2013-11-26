@@ -1,7 +1,5 @@
 package ets.commande;
 
-import ets.Perspective;
-
 /**
  *
  *
@@ -10,12 +8,7 @@ import ets.Perspective;
  * @author
  * 2013-11-
  */
-public class Deplacer implements InterfaceCommande {
-
-    public Deplacer(Perspective perspective, int centreX, int centreY) {
-
-    }
-
+public class Coller implements InterfaceCommande {
     @Override
     public void executer() {
         //To change body of implemented methods use File | Settings | File Templates.
