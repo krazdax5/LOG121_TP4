@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Classe permettant de gerer la fenetre principale de l'application avec son MenuBar
@@ -25,6 +27,8 @@ public class FenetrePrincipale implements Runnable {
 
     ImageConcrete imageConcrete;
 
+    Controlleur controlleur = new Controlleur();
+
 
     public static void main(String args[]) {
 
@@ -42,15 +46,16 @@ public class FenetrePrincipale implements Runnable {
 
         application.setTitle("Application Images TP4");
 
-        Dimension dimensionEcran = new Dimension();
-        dimensionEcran.setSize(1000,455);
+//        Dimension dimensionEcran = new Dimension();
+//        dimensionEcran.setSize(1000,455);
 
         // Pour avoir la dimension de l'ecran :
         // Toolkit.getDefaultToolkit().getScreenSize();
 
-        application.setPreferredSize(dimensionEcran);
-        application.setMinimumSize(dimensionEcran);
-        application.setMaximumSize(dimensionEcran);
+//        application.setPreferredSize(dimensionEcran);
+//        application.setMinimumSize(dimensionEcran);
+//        application.setMaximumSize(dimensionEcran);
+
 
         // Position au milieu de l'ecran
         application.setLocationRelativeTo(null);
@@ -61,13 +66,23 @@ public class FenetrePrincipale implements Runnable {
         panneauPrincipal = new PanneauPrincipal();
         application.setContentPane(panneauPrincipal);
 
+        int hauteur = application.getContentPane().getWidth();
+        int largeur = application.getContentPane().getHeight();
+
+        Dimension dimensionFenetre = new Dimension(hauteur,largeur);
+
+        application.setPreferredSize(dimensionFenetre);
+        application.setMaximumSize(dimensionFenetre);
+        application.setMinimumSize(dimensionFenetre);
+
+
         application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         application.setVisible(true);
 
     }
 
-    private class PanneauPrincipal extends JPanel {
+    private class PanneauPrincipal extends JPanel implements Observer{
 
         JPanel vueActive1;
         JPanel vueActive2;
@@ -75,63 +90,134 @@ public class FenetrePrincipale implements Runnable {
 
         private PanneauPrincipal() {
 
-//            this.setLayout(new BorderLayout());
 
-            this.setBackground(Color.LIGHT_GRAY);
+//            Dimension dim = new Dimension(500,500);
 
+//            this.setSize(500,500);
+//            this.setPreferredSize(dim);
+//            this.setMaximumSize(dim);
+//            this.setMinimumSize(dim);
 
-            vueActive1 = new JPanel();
+//            this.setLayout(new CardLayout());
 
-            vueActive1.setBackground(Color.BLACK);
+            JTabbedPane tabbedPane = new JTabbedPane();
 
-            Dimension dimEssai = new Dimension();
-            dimEssai.setSize(400,400);
-            vueActive1.setPreferredSize(dimEssai);
+            imageConcrete = ImageConcrete.createImage("/Users/Mathieu/Desktop/image1.jpg");
 
+            int hauteur = imageConcrete.getTheImage().getHeight(null);
+            int largeur = imageConcrete.getTheImage().getWidth(null);
 
-            this.add(vueActive1);
+            Dimension dimensionImage = new Dimension(largeur, hauteur);
 
-            vueActive2 = new JPanel();
+            this.setSize(dimensionImage);
+            this.setPreferredSize(dimensionImage);
+            this.setMaximumSize(dimensionImage);
+            this.setMinimumSize(dimensionImage);
 
-            vueActive2.setBackground(Color.GRAY);
+//            int hauteur = 400;
+//            int largeur = 400;
 
-            vueActive2.setPreferredSize(dimEssai);
-
-
-            this.add(vueActive2);
-
-//            JPanel vueReduite = new JPanel();
-
-            imageConcrete = ImageConcrete.createImage("/Users/Mathieu/Desktop/Automne 2013.png");
-
-            vueReduite = new VueReduite(imageConcrete.getTheImage(), 125, 125);
+            vueReduite = new VueReduite(imageConcrete.getTheImage(), hauteur, largeur);
 
             imageConcrete.addObserver(vueReduite);
 
             vueReduite.setBackground(Color.WHITE);
 
-            Dimension dimReduite = new Dimension();
-            dimReduite.setSize(125, 125);
+//            Dimension dimReduite = new Dimension();
+//            dimReduite.setSize(largeur, hauteur);
 
-            vueReduite.setPreferredSize(dimReduite);
+            vueReduite.setPreferredSize(dimensionImage);
 
 
-            this.add(vueReduite);
+            tabbedPane.addTab("Vue Reduite", null, vueReduite,
+                    "Vue Reduite");
+
+//            JPanel panel2 = new JPanel();
+//            panel2.setPreferredSize(dim);
+//
+//
+//            tabbedPane.addTab("Vue Active 1", null, panel2,
+//                    "Vue Active 1");
+
+
+            this.add(tabbedPane);
+
+//            this.add(tabbedPane);
+//            this.add(tabbedPane1);
+
+//            this.setLayout(new BorderLayout());
+//
+//            this.setBackground(Color.LIGHT_GRAY);
+//
+//
+//            vueActive1 = new JPanel();
+//
+//            vueActive1.setBackground(Color.BLACK);
+//
+//            Dimension dimEssai = new Dimension();
+//            dimEssai.setSize(400,400);
+//            vueActive1.setPreferredSize(dimEssai);
+//
+//
+//            this.add(vueActive1);
+//
+//            vueActive2 = new JPanel();
+//
+//            vueActive2.setBackground(Color.GRAY);
+//
+//            vueActive2.setPreferredSize(dimEssai);
+//
+//
+//            this.add(vueActive2);
+//
+////            JPanel vueReduite = new JPanel();
+//
+//            imageConcrete = ImageConcrete.createImage("/Users/Mathieu/Desktop/Automne 2013.png");
+//
+//            vueReduite = new VueReduite(imageConcrete.getTheImage(), 125, 125);
+//
+//            imageConcrete.addObserver(vueReduite);
+//
+//            vueReduite.setBackground(Color.WHITE);
+//
+//            Dimension dimReduite = new Dimension();
+//            dimReduite.setSize(125, 125);
+//
+//            vueReduite.setPreferredSize(dimReduite);
+//
+//
+//            this.add(vueReduite);
 
         }
 
         private void setImage(String adresse) {
 
-//            Image image = ImageConcrete.createImage(adresse).getTheImage();
-//
-//            vueReduite.setImageReduite(image);
-
             imageConcrete.setImage(adresse);
+
+            Dimension dimension = new Dimension(imageConcrete.getTheImage().getWidth(null),
+                    imageConcrete.getTheImage().getHeight(null));
+
+            vueReduite.setSize(dimension);
+            vueReduite.setMinimumSize(dimension);
+            vueReduite.setMaximumSize(dimension);
+            vueReduite.setPreferredSize(dimension);
+
+            this.setSize(dimension);
+            this.setMinimumSize(dimension);
+            this.setMaximumSize(dimension);
+            this.setPreferredSize(dimension);
+
 
             vueReduite.repaint();
 
+            this.repaint();
+
         }
 
+        @Override
+        public void update(Observable observable, Object o) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
     }
 
     private class MenuBar extends JMenuBar {
@@ -156,9 +242,8 @@ public class FenetrePrincipale implements Runnable {
 
                     if(valeurRetour == JFileChooser.APPROVE_OPTION) {
                         String fichierChoisi = fileChooser.getSelectedFile().getAbsolutePath();
-                        panneauPrincipal.setImage(fichierChoisi);
+                        controlleur.changerImage(fichierChoisi);
                     }
-
                 }
             });
 

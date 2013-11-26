@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
  *
  *          Historique des modifications
  ***************************************************
- * @author
+ * @author Charles Levesque
  * 2013-11-
  * @author Mathieu Lachance LACM14059305
  * 2013-11-25 Ajout de la methode setImage() et rendre Observable

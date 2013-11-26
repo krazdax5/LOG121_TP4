@@ -62,5 +62,13 @@ public class MemoireCommandes {
             return null;
         }
     }
+
+    public InterfaceCommande refaireCommande() {
+        try {
+            return pileCommandes.push(pileCommandesDefaites.pop());
+        } catch(EmptyStackException e) {
+            return null;
+        }
+    }
     
 }

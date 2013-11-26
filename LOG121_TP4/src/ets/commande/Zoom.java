@@ -1,5 +1,6 @@
 package ets.commande;
 
+import ets.Perspective;
 import ets.commande.InterfaceCommande;
 
 /**
@@ -11,6 +12,10 @@ import ets.commande.InterfaceCommande;
  * 2013-11-
  */
 public class Zoom implements InterfaceCommande {
+
+    public Zoom(Perspective perspective, int echelle){
+
+    }
 
     @Override
     public void executer() {

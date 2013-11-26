@@ -37,44 +37,18 @@ public class VueReduite  extends JPanel implements Observer {
         this.largeur = largeur;
         this.hauteur = hauteur;
 
-
-//        BufferedImage buf = new BufferedImage(largeur,hauteur, BufferedImage.TYPE_INT_ARGB);
-//
-//        Graphics2D g = buf.createGraphics();
-//
-//        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-//        g.drawImage(image,0,0,largeur,hauteur,null);
-
-
-//
-//        BufferedImage buf = new BufferedImage(largeur-10,hauteur-10, Image.SCALE_SMOOTH);
-//
-//        ImageIcon icon = new ImageIcon(buf);
-//
-//        label.setIcon(icon);
-
-//        JLabel label = new JLabel(new ImageIcon(image));
-//
-//        Dimension dim = new Dimension(largeur-10,hauteur-10);
-//
-//        label.setMaximumSize(dim);
-//        label.setMinimumSize(dim);
-//        label.setPreferredSize(dim);
-//
-//
-//        this.add(label);
-//        this.setVisible(true);
-
     }
 
     public void setImageReduite(Image image) {
         this.imageReduite = image;
+        this.largeur = image.getWidth(null);
+        this.hauteur = image.getHeight(null);
     }
 
     @Override
     public void paintComponent(Graphics g) {
 
-        g.drawImage(imageReduite,0,0,largeur,hauteur,null);
+        g.drawImage(imageReduite,0,0,hauteur, largeur/*,0,0,largeur*2,hauteur*2*/,null);
 
     }
 
