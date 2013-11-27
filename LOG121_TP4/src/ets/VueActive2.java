@@ -1,6 +1,7 @@
 package ets;
 
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
@@ -14,7 +15,7 @@ import java.util.Observer;
  * @author Jacob Marcil
  * 2013-11-26
  */
-public class VueActive2 implements Observer {
+public class VueActive2 extends JPanel implements Observer {
 
     private Image imageVueActive2;
     private Perspective perspective;

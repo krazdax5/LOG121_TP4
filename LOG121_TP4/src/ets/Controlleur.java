@@ -1,6 +1,9 @@
 package ets;
 
 
+import ets.gui.FenetrePrincipale;
+import ets.gui.PanneauPrincipal;
+
 /**
  *
  *
@@ -11,20 +14,37 @@ package ets;
  */
 public class Controlleur {
 
+
+    private static Controlleur controlleur;
+
+    private PanneauPrincipal panneauPrincipal;
     GestionCommande gestionnaire;
 
-    VueReduite vignette;
     ImageConcrete image;
 
     public static void main(String args[]) {
 
-        FenetrePrincipale applicationImages = new FenetrePrincipale();
+        FenetrePrincipale applicationImages = FenetrePrincipale.getFenetrePrincipale();
 
         Thread t = new Thread(applicationImages);
 
         t.start();
     }
 
+    private Controlleur() {
+        image = ImageConcrete.createImage(null);
+        image.addObserver(VueReduite.getVueReduite());
+        image.addObserver(FenetrePrincipale.getFenetrePrincipale());
+        image.addObserver(PanneauPrincipal.getPanneauPrincipal());
+        gestionnaire = new GestionCommande();
+    }
+
+    public static Controlleur getControlleur() {
+        if(controlleur == null)
+            controlleur = new Controlleur();
+
+        return controlleur;
+    }
 
     public void changerImage(String nouvelleImage) {
         this.image.setImage(nouvelleImage);

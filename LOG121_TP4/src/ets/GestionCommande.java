@@ -33,7 +33,7 @@ public class GestionCommande {
     /**
      * Constructeur prive qui permet l'implementation du patron factory
      */
-    private GestionCommande() {
+    public GestionCommande() {
         factory = new Factory();
         pileCommandes = new Stack<InterfaceCommande>();
         pileCommandesDefaites = new Stack<InterfaceCommande>();

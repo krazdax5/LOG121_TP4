@@ -24,6 +24,8 @@ public class VueReduite  extends JPanel implements Observer {
     private int largeur;
     private int hauteur;
 
+    public static VueReduite instance;
+
     /**
      * Constructeur qui permet de passer en parametre l'image que l'on veut changer,
      * avec les dimensions desirees.
@@ -31,12 +33,20 @@ public class VueReduite  extends JPanel implements Observer {
      * @param largeur Largeur que l'on veut attribuer a l'image
      * @param hauteur Longueur que l'on veut attribuer a l'image
      */
-    public VueReduite (Image image, int largeur, int hauteur){
+    private VueReduite (Image image, int largeur, int hauteur){
 
         this.imageReduite = image;
         this.largeur = largeur;
         this.hauteur = hauteur;
 
+    }
+
+    public static VueReduite getVueReduite() {
+        if(instance == null) {
+            instance = new VueReduite(null,1,1);
+        }
+
+        return instance;
     }
 
     public void setImageReduite(Image image) {
@@ -48,7 +58,7 @@ public class VueReduite  extends JPanel implements Observer {
     @Override
     public void paintComponent(Graphics g) {
 
-        g.drawImage(imageReduite,0,0,hauteur, largeur/*,0,0,largeur*2,hauteur*2*/,null);
+        g.drawImage(imageReduite,0,0,largeur,hauteur,null);
 
     }
 

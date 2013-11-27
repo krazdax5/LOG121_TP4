@@ -32,11 +32,13 @@ public class ImageConcrete extends Observable implements IImage {
      * M&eactue;thode priv&eacute;
      */
     private ImageConcrete(String adresse){
-        try{
-            File sourceImage = new File(adresse);
-            theImage = ImageIO.read(sourceImage);
-        } catch(Exception ex){
-            ex.printStackTrace();
+        if(adresse != null) {
+            try{
+                File sourceImage = new File(adresse);
+                theImage = ImageIO.read(sourceImage);
+            } catch(Exception ex){
+                ex.printStackTrace();
+            }
         }
     }
 
