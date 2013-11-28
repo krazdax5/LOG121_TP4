@@ -1,6 +1,7 @@
 package ets.commande;
 
 import ets.Perspective;
+import ets.VueActive1;
 
 /**
  *
@@ -12,17 +13,19 @@ import ets.Perspective;
  */
 public class Zoom implements InterfaceCommande {
 
-    public Zoom(Perspective perspective, int echelle){
+    private Perspective perspective;
 
+    public Zoom(Perspective perspective){
+        this.perspective = perspective;
     }
 
     @Override
     public void executer() {
-        //To change body of implemented methods use File | Settings | File Templates.
+        perspective.setEchelle(perspective.getEchelle() + 1);
     }
 
     @Override
     public void defaire() {
-        //To change body of implemented methods use File | Settings | File Templates.
+        perspective.setEchelle(perspective.getEchelle() - 1);
     }
 }

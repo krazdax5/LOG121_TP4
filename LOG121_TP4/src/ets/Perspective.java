@@ -14,37 +14,47 @@ import java.util.Observable;
  */
 public class Perspective extends Observable {
 
-    private ImageConcrete image;
     private Point2D offset;
-    private Rectangle2D rectangleVue;
+    private int offsetX;
+    private int offsetY;
     private int echelle;
-    private final int GRANDEUR_HORIZONTAL_IMAGE = 200;
-    private final int GRANDEUR_VERTICAL_IMAGE = 150;
 
     /**
      * Constructeur de perspective
      */
     public Perspective(){
         echelle = 1;
-        offset.setLocation(0,0);
+        offsetX = 0;
+        offsetY = 0;
     }
 
     /**
-     * Change la valeur du centre de la perspective
-     * @param corner
+     * Change la valeur du coin de la perspective
+     * @param offsetX
+     * @param offsetY
      */
-    public void setCornerPerspective(Point2D corner){
-        offset.setLocation(corner.getX(),corner.getY());
+    public void setCornerPerspective(int offsetX, int offsetY){
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
         setChanged();
         notifyObservers();
     }
 
     /**
-     * Retourne la position du centre de la perspective
+     * Retourne la position du coin de la perspective
      * @return centrePerspective
      */
-    public Point2D getCornerImage(){
-        return offset;
+    public int getCornerImageX(){
+
+        return offsetX;
+    }
+    /**
+     * Retourne la position du coin de la perspective
+     * @return centrePerspective
+     */
+    public int getCornerImageY(){
+
+        return offsetY;
     }
 
     /**

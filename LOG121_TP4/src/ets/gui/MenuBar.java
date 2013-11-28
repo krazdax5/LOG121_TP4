@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.renderable.ContextualRenderedImageFactory;
 
 /**
  * Created with IntelliJ IDEA.
@@ -99,17 +100,49 @@ public class MenuBar extends JMenuBar {
         JMenu menuVue = new JMenu();
         menuVue.setText("Vue");
 
+
+
+
+
+
         JMenuItem zoom = new JMenuItem();
         zoom.setText("Zoom...");
+
+        zoom.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_SHIFT, Toolkit.getDefaultToolkit().
+                getMenuShortcutKeyMask()));
+
+        zoom.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Controlleur controlleur = Controlleur.getControlleur();
+
+                controlleur.zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1());
+            }
+        });
+
 
         menuVue.add(zoom);
 
         JMenuItem deplacer = new JMenuItem();
         deplacer.setText("Deplacer...");
 
+        deplacer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Controlleur controlleur = Controlleur.getControlleur();
+                //controlleur.deplacer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1());
+            }
+        });
+
         menuVue.add(deplacer);
 
         this.add(menuVue);
+
+
+
+
+
 
     }
 

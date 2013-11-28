@@ -21,10 +21,10 @@ public class VueActive2 extends JPanel implements Observer {
     private Perspective perspective;
     private int hauteur;
     private int largeur;
+    private static VueActive2 instance;
 
     @Override
     public void update(Observable observable, Object o) {
-        //To change body of implemented methods use File | Settings | File Templates.
         ImageConcrete image = (ImageConcrete) observable;
         this.setVueActive2(image.getTheImage());
     }
@@ -46,6 +46,12 @@ public class VueActive2 extends JPanel implements Observer {
         this.largeur = largeur;
     }
 
+    public static VueActive2 getVueActive2(){
+        if(instance == null){
+            instance = new VueActive2(null,1,1);
+        }
+        return instance;
+    }
     /**
      * Setter de vueActive2
      * @param image
@@ -61,10 +67,14 @@ public class VueActive2 extends JPanel implements Observer {
      * @param g
      */
     public void paintComponent(Graphics g){
-        g.drawImage(imageVueActive2, (int)perspective.getCornerImage().getX(), (int)perspective.getCornerImage().getY(),
-                (int)(perspective.getCornerImage().getX()+largeur)*perspective.getEchelle(),
-                (int)(perspective.getCornerImage().getY()+hauteur)*perspective.getEchelle(), 0, 0 , largeur, hauteur, null);
-
+//        try{
+//        g.drawImage(imageVueActive2, (int)perspective.getCornerImage().getX(), (int)perspective.getCornerImage().getY(),
+//                (int)(perspective.getCornerImage().getX()+largeur)*perspective.getEchelle(),
+//                (int)(perspective.getCornerImage().getY()+hauteur)*perspective.getEchelle(), 0, 0 , largeur, hauteur, null);
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//        }
     }
 
 

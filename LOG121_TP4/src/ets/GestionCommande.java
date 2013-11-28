@@ -67,11 +67,12 @@ public class GestionCommande {
         }
     }
 
-    public void zommer(Perspective perspective, int echelle){
-//        factory
-    }
-    public void deplacer(Perspective perspective, int centreX, int centreY) {
+    public void zommer(Perspective perspective){
+        factory.createZoom(perspective);
 
+    }
+    public void deplacer(Perspective perspective, int offsetX, int offsetY) {
+        factory.createDeplacer(perspective, offsetX, offsetY);
     }
     public void refaire() {
 
