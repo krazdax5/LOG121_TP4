@@ -1,15 +1,19 @@
 package ets;
 
 
+import ets.gui.PanneauPrincipal;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.geom.AffineTransform;
+import java.awt.image.RescaleOp;
 import java.util.Observable;
 import java.util.Observer;
 
 
 /**
- *
- *
  *          Historique des modifications
  ***************************************************
  * @author Jacob Marcil
@@ -19,41 +23,35 @@ public class VueActive1 extends JPanel implements Observer {
 
     private Image imageVueActive1;
     private Perspective perspective;
-    private int hauteur;
-    private int largeur;
 
     @Override
     public void update(Observable observable, Object o) {
-        //To change body of implemented methods use File | Settings | File Templates.
         ImageConcrete image = (ImageConcrete) observable;
         this.setVueActive1(image.getTheImage());
     }
 
     /**
-     * Constructeur par default de VueActive1
-     */
-    public VueActive1(){}
-
-    /**
      * Constructeur
      * @param image
-     * @param largeur
-     * @param hauteur
      */
-    public VueActive1(Image image, int largeur, int hauteur){
+    public VueActive1(Image image){
         this.imageVueActive1 = image;
-        this.hauteur = hauteur;
-        this.largeur = largeur;
+        this.perspective = new Perspective();
     }
 
+    public static VueActive1 getVueActive1(){
+        return PanneauPrincipal.instanceVueActive1;
+    }
+
+    public Perspective getPerspectiveVueActive1(){
+        return this.perspective;
+    }
     /**
      * Setter de la vueActive1
      * @param image
      */
     public void setVueActive1(Image image){
         this.imageVueActive1 = image;
-        this.hauteur = image.getHeight(null);
-        this.largeur = image.getWidth(null);
     }
 
     /**
@@ -61,10 +59,10 @@ public class VueActive1 extends JPanel implements Observer {
      * @param g
      */
     public void paintComponent(Graphics g){
-        g.drawImage(imageVueActive1, (int)perspective.getCornerImage().getX(), (int)perspective.getCornerImage().getY(),
-                (int)(perspective.getCornerImage().getX()+largeur)*perspective.getEchelle(),
-                (int)(perspective.getCornerImage().getY()+hauteur)*perspective.getEchelle(), 0, 0 , largeur, hauteur, null);
-
+            g.drawImage(imageVueActive1,perspective.getCornerImageX(),perspective.getCornerImageY(),
+                    imageVueActive1.getWidth(null)*perspective.getEchelle(),
+                    imageVueActive1.getHeight(null)*perspective.getEchelle(),0,0,imageVueActive1.getWidth(null),
+                    imageVueActive1.getHeight(null), null);
     }
 
 

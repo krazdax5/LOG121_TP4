@@ -1,6 +1,7 @@
 package ets;
 
 import ets.commande.InterfaceCommande;
+import ets.commande.Zoom;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
@@ -67,11 +68,14 @@ public class GestionCommande {
         }
     }
 
-    public void zommer(Perspective perspective, int echelle){
-//        factory
-    }
-    public void deplacer(Perspective perspective, int centreX, int centreY) {
+    public void zommer(Perspective perspective){
+        Zoom zoom = factory.createZoom(perspective);
+        zoom.executer();
 
+
+    }
+    public void deplacer(Perspective perspective, int offsetX, int offsetY) {
+        factory.createDeplacer(perspective, offsetX, offsetY);
     }
     public void refaire() {
 

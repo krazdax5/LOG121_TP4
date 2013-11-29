@@ -4,6 +4,8 @@ package ets;
 import ets.gui.FenetrePrincipale;
 import ets.gui.PanneauPrincipal;
 
+import java.util.Observer;
+
 /**
  *
  *
@@ -34,6 +36,10 @@ public class Controlleur {
     private Controlleur() {
         image = ImageConcrete.createImage(null);
         image.addObserver(VueReduite.getVueReduite());
+
+        image.addObserver(VueActive1.getVueActive1());
+        image.addObserver(VueActive2.getVueActive2());
+
         image.addObserver(FenetrePrincipale.getFenetrePrincipale());
         image.addObserver(PanneauPrincipal.getPanneauPrincipal());
         gestionnaire = new GestionCommande();
@@ -50,11 +56,11 @@ public class Controlleur {
         this.image.setImage(nouvelleImage);
     }
 
-    public void zoomer(Perspective perspective, int echelle) {
-        gestionnaire.zommer(perspective,echelle);
+    public void zoomer(Perspective perspective) {
+        gestionnaire.zommer(perspective);
     }
 
-    public void deplacer(Perspective perspective, int centreX, int centreY) {
-        gestionnaire.deplacer(perspective, centreX, centreY);
+    public void deplacer(Perspective perspective, int offsetX, int offsetY) {
+        gestionnaire.deplacer(perspective, offsetX, offsetY);
     }
 }

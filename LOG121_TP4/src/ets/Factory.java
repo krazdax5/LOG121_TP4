@@ -13,11 +13,11 @@ import ets.commande.Zoom;
  */
 public class Factory {
 
-    public Zoom createZoom(Perspective perspective, int echelle) {
-        return new Zoom(perspective, echelle);
+    public Zoom createZoom(Perspective perspective) {
+        return new Zoom(perspective);
     }
 
-    public Deplacer createDeplacer(Perspective perspective, int centreX, int centreY) {
-        return new Deplacer(perspective,centreX,centreY);
+    public Deplacer createDeplacer(Perspective perspective, int offsetX, int offsetY) {
+        return new Deplacer(perspective,offsetX, offsetY);
     }
 }

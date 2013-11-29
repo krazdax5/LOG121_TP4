@@ -1,12 +1,13 @@
 package ets.gui;
 
-import ets.ImageConcrete;
-import ets.VueActive1;
-import ets.VueActive2;
-import ets.VueReduite;
+import ets.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,9 +24,9 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
     JTabbedPane tabbedPane;
 
-    VueActive1 vueActive1;
-    VueActive2 vueActive2;
-    VueReduite vueReduite;
+    public static VueActive1 instanceVueActive1;
+    protected VueActive2 vueActive2;
+    protected VueReduite vueReduite;
 
     public static PanneauPrincipal getPanneauPrincipal() {
         if(instance == null)
@@ -42,7 +43,8 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
         String workingDir = System.getProperty("user.dir");
 
-        ImageConcrete imageInitiale = ImageConcrete.createImage(workingDir+"/src/ets/res/img/image1.jpg");
+        ImageConcrete imageInitiale = ImageConcrete.createImage("C:\\Users\\Jacob\\Documents\\LOG121_TP4\\LOG121_TP4\\src\\ets\\res\\img\\image1.jpg");
+
 
         int hauteur = imageInitiale.getTheImage().getHeight(null);
         int largeur = imageInitiale.getTheImage().getWidth(null);
@@ -66,16 +68,25 @@ public class PanneauPrincipal extends JPanel implements Observer {
                 "Vue Reduite");
 
 
-        vueActive1 = new VueActive1();
+        //******* Debut vue active 1 **********
+        instanceVueActive1 = new VueActive1(imageInitiale.getTheImage());
 
-//        vueActive1.setPreferredSize(dimensionImage);
+        instanceVueActive1.setPreferredSize(dimensionImage);
 
-        tabbedPane.addTab("Vue Active 1", null, vueActive1, "Vue Active 1");
+
+        tabbedPane.addTab("Vue Active 1", null, instanceVueActive1, "Vue Active 1");
+        //****** Fin vue active 1 ***********
+
+       //******* Debut vue active 2 **********
 
         vueActive2 = new VueActive2();
 
-        tabbedPane.addTab("Vue Active 2", null, vueActive2, "Vue Active 2");
+        vueActive2.setVueActive2(imageInitiale.getTheImage());
 
+        vueActive2.setPreferredSize(dimensionImage);
+
+        tabbedPane.addTab("Vue Active 2", null, vueActive2, "Vue Active 2");
+        // ******** Fin vue active 2 *******
 
         this.add(tabbedPane);
 

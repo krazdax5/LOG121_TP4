@@ -1,6 +1,7 @@
 package ets.commande;
 
 import ets.Perspective;
+import ets.gui.PanneauPrincipal;
 
 /**
  *
@@ -12,17 +13,25 @@ import ets.Perspective;
  */
 public class Deplacer implements InterfaceCommande {
 
-    public Deplacer(Perspective perspective, int centreX, int centreY) {
+    private Perspective perspective;
+    private int offsetX;
+    private int offsetY;
 
+    public Deplacer(Perspective perspective, int offsetX, int offsetY) {
+        this.perspective = perspective;
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
     }
 
     @Override
     public void executer() {
-        //To change body of implemented methods use File | Settings | File Templates.
+        perspective.setCornerPerspective(offsetX, offsetY);
+        PanneauPrincipal.instanceVueActive1.repaint();
+
     }
 
     @Override
     public void defaire() {
-        //To change body of implemented methods use File | Settings | File Templates.
+
     }
 }
