@@ -4,6 +4,8 @@ package ets;
 import ets.gui.FenetrePrincipale;
 import ets.gui.PanneauPrincipal;
 
+import java.util.Observer;
+
 /**
  *
  *

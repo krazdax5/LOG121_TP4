@@ -4,9 +4,7 @@ import ets.Controlleur;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.awt.image.renderable.ContextualRenderedImageFactory;
 
 /**
@@ -103,7 +101,7 @@ public class MenuBar extends JMenuBar {
 
 
 
-
+        //************ZOOM ******************
 
         JMenuItem zoom = new JMenuItem();
         zoom.setText("Zoom...");
@@ -117,13 +115,17 @@ public class MenuBar extends JMenuBar {
             public void actionPerformed(ActionEvent actionEvent) {
                 Controlleur controlleur = Controlleur.getControlleur();
 
-                controlleur.zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1());
+                controlleur.zoomer(PanneauPrincipal.getPanneauPrincipal().instanceVueActive1.getPerspectiveVueActive1());
+
+
             }
         });
 
 
         menuVue.add(zoom);
+        //*****************FIN ZOOM ******************
 
+        //****************Deplacer ***************
         JMenuItem deplacer = new JMenuItem();
         deplacer.setText("Deplacer...");
 
@@ -131,15 +133,14 @@ public class MenuBar extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controlleur controlleur = Controlleur.getControlleur();
-                //controlleur.deplacer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1());
+               // controlleur.deplacer(PanneauPrincipal.getPanneauPrincipal().instanceVueActive1.getPerspectiveVueActive1(0,0));
             }
         });
 
         menuVue.add(deplacer);
+        //**************Fin deplacer ******************
 
         this.add(menuVue);
-
-
 
 
 

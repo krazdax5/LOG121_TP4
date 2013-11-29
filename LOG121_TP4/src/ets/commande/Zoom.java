@@ -1,7 +1,9 @@
 package ets.commande;
 
+import ets.Controlleur;
 import ets.Perspective;
 import ets.VueActive1;
+import ets.gui.PanneauPrincipal;
 
 /**
  *
@@ -22,10 +24,13 @@ public class Zoom implements InterfaceCommande {
     @Override
     public void executer() {
         perspective.setEchelle(perspective.getEchelle() + 1);
+        PanneauPrincipal.instanceVueActive1.repaint();
+
     }
 
     @Override
     public void defaire() {
         perspective.setEchelle(perspective.getEchelle() - 1);
+        PanneauPrincipal.instanceVueActive1.repaint();
     }
 }

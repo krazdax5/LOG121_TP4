@@ -24,7 +24,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
     JTabbedPane tabbedPane;
 
-    protected VueActive1 vueActive1;
+    public static VueActive1 instanceVueActive1;
     protected VueActive2 vueActive2;
     protected VueReduite vueReduite;
 
@@ -69,40 +69,12 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
 
         //******* Debut vue active 1 **********
-        vueActive1 = new VueActive1();
+        instanceVueActive1 = new VueActive1(imageInitiale.getTheImage());
 
-        vueActive1.setVueActive1(imageInitiale.getTheImage());
+        instanceVueActive1.setPreferredSize(dimensionImage);
 
-        vueActive1.setPreferredSize(dimensionImage);
 
-        vueActive1.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                e.getX();
-                e.getY();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });
-        tabbedPane.addTab("Vue Active 1", null, vueActive1, "Vue Active 1");
+        tabbedPane.addTab("Vue Active 1", null, instanceVueActive1, "Vue Active 1");
         //****** Fin vue active 1 ***********
 
        //******* Debut vue active 2 **********
