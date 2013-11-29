@@ -64,6 +64,13 @@ public class MenuBar extends JMenuBar {
         defaire.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_Z, Toolkit.getDefaultToolkit().
                 getMenuShortcutKeyMask()));
+        defaire.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Controlleur controlleur = Controlleur.getControlleur();
+                controlleur.defaire();
+            }
+        });
 
         menuEdition.add(defaire);
 
@@ -72,6 +79,13 @@ public class MenuBar extends JMenuBar {
         refaire.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_Y, Toolkit.getDefaultToolkit().
                 getMenuShortcutKeyMask()));
+        refaire.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Controlleur controlleur = Controlleur.getControlleur();
+                controlleur.refaire();
+            }
+        });
 
         menuEdition.add(refaire);
 
@@ -82,6 +96,13 @@ public class MenuBar extends JMenuBar {
         copier.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_C, Toolkit.getDefaultToolkit().
                 getMenuShortcutKeyMask()));
+        copier.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Controlleur controlleur = Controlleur.getControlleur();
+                controlleur.ctrlC(null);
+            }
+        });
 
         menuEdition.add(copier);
 
@@ -90,8 +111,13 @@ public class MenuBar extends JMenuBar {
         coller.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_V, Toolkit.getDefaultToolkit().
                 getMenuShortcutKeyMask()));
-
-        menuEdition.add(coller);
+        coller.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Controlleur controlleur = Controlleur.getControlleur();
+                controlleur.ctrlV();
+            }
+        });
 
         this.add(menuEdition);
 
