@@ -1,5 +1,7 @@
 package ets.commande;
 
+import ets.Perspective;
+
 /**
  *
  *
@@ -9,6 +11,11 @@ package ets.commande;
  * 2013-11-
  */
 public class Coller implements InterfaceCommande {
+
+    public Coller(Perspective perspective) {
+
+    }
+
     @Override
     public void executer() {
         //To change body of implemented methods use File | Settings | File Templates.

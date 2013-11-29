@@ -43,8 +43,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
         String workingDir = System.getProperty("user.dir");
 
-        ImageConcrete imageInitiale = ImageConcrete.createImage("C:\\Users\\Jacob\\Documents\\LOG121_TP4\\LOG121_TP4\\src\\ets\\res\\img\\image1.jpg");
-
+        ImageConcrete imageInitiale = ImageConcrete.createImage(workingDir+"/src/ets/res/img/image1.jpg");
 
         int hauteur = imageInitiale.getTheImage().getHeight(null);
         int largeur = imageInitiale.getTheImage().getWidth(null);

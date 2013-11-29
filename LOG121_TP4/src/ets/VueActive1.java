@@ -52,6 +52,7 @@ public class VueActive1 extends JPanel implements Observer {
      */
     public void setVueActive1(Image image){
         this.imageVueActive1 = image;
+        this.perspective.setEchelle(1);
     }
 
     /**

@@ -78,8 +78,8 @@ public class FenetrePrincipale implements Runnable, Observer {
     @Override
     public void update(Observable observable, Object o) {
         ImageConcrete image = (ImageConcrete) observable;
-        Dimension dimensionNouvelleImage = new Dimension(image.getTheImage().getWidth(null)+25,
-                image.getTheImage().getHeight(null)+25);
+        Dimension dimensionNouvelleImage = new Dimension(image.getTheImage().getWidth(null)+50,
+                image.getTheImage().getHeight(null)+75);
 
         application.setSize(dimensionNouvelleImage);
         application.setMinimumSize(dimensionNouvelleImage);
@@ -87,6 +87,8 @@ public class FenetrePrincipale implements Runnable, Observer {
         application.setPreferredSize(dimensionNouvelleImage);
 
         application.repaint();
+
+        application.pack();
     }
 
 }

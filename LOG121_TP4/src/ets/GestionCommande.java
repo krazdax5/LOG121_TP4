@@ -18,17 +18,20 @@ import java.util.Stack;
  */
 public class GestionCommande {
 
-    Factory factory;
+    private Factory factory;
 
     /**
      * Pile qui garde en memoire les commandes effectuees par l'utilisateur
      */
-    Stack<InterfaceCommande> pileCommandes;
+    private Stack<InterfaceCommande> pileCommandes;
 
     /**
      * Pile qui garde en memoire les commandes defaites par l'utilsateur
      */
-    Stack<InterfaceCommande> pileCommandesDefaites;
+    private Stack<InterfaceCommande> pileCommandesDefaites;
+
+
+    private Stack<InterfaceCommande> pileCopie;
 
 
     /**
@@ -68,6 +71,33 @@ public class GestionCommande {
         }
     }
 
+    /**
+     * Methode qui permet de de concerver en mémoire dans une pile la
+     * perspective que l'on a quand on copie l'image
+     */
+    public void ctrlC(Perspective perspective){
+
+        InterfaceCommande ctrlC = factory.createCopie(perspective);
+        if(!pileCopie.isEmpty())
+            pileCopie.pop();
+        pileCopie.push(ctrlC);
+
+    }
+
+    /**
+     * Methode qui permet de prendre la derniere valeur de la pile de
+     * copie et la remettre dans la pile de commande
+     */
+    public void ctrlV(){
+        if(!pileCopie.isEmpty()) {
+            InterfaceCommande ctrlV = pileCopie.peek();
+
+            ctrlV.executer();
+
+            pileCommandes.push(pileCopie.peek());
+        }
+    }
+
     public void zommer(Perspective perspective){
         Zoom zoom = factory.createZoom(perspective);
         zoom.executer();
@@ -78,9 +108,17 @@ public class GestionCommande {
         factory.createDeplacer(perspective, offsetX, offsetY);
     }
     public void refaire() {
-
+        if(!pileCommandesDefaites.isEmpty()){
+            InterfaceCommande commandeRefaite = pileCommandesDefaites.pop();
+            commandeRefaite.executer();
+            pileCommandes.push(commandeRefaite);
+        }
     }
     public void defaire() {
-
+        if(!pileCommandes.isEmpty()){
+            InterfaceCommande commandeDefaite = pileCommandes.pop();
+            commandeDefaite.defaire();
+            pileCommandesDefaites.push(commandeDefaite);
+        }
     }
 }

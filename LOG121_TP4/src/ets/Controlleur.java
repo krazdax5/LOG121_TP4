@@ -63,4 +63,20 @@ public class Controlleur {
     public void deplacer(Perspective perspective, int offsetX, int offsetY) {
         gestionnaire.deplacer(perspective, offsetX, offsetY);
     }
+
+    public void ctrlC(Perspective perspective){
+        gestionnaire.ctrlC(perspective);
+    }
+
+    public void ctrlV(){
+        gestionnaire.ctrlV();
+    }
+
+    public void defaire() {
+        gestionnaire.defaire();
+    }
+
+    public void refaire() {
+        gestionnaire.refaire();
+    }
 }
