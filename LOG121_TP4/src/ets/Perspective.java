@@ -2,6 +2,8 @@ package ets;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.Observable;
 
 /**
@@ -13,6 +15,7 @@ import java.util.Observable;
  * 2013-11-26
  */
 public class Perspective extends Observable {
+
 
     private Point2D offset;
     private int offsetX;

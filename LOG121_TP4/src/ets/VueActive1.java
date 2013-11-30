@@ -21,6 +21,7 @@ import java.util.Observer;
  */
 public class VueActive1 extends JPanel implements Observer {
 
+    private boolean estActive;
     private Image imageVueActive1;
     private Perspective perspective;
 
@@ -62,6 +63,18 @@ public class VueActive1 extends JPanel implements Observer {
     public void setVueActive1(Image image){
         this.imageVueActive1 = image;
         this.perspective.setEchelle(1);
+    }
+
+    public void setPerspective(Perspective perspective) {
+        this.perspective = perspective;
+    }
+
+    public void setActive(boolean estActive) {
+        this.estActive = estActive;
+    }
+
+    public boolean estActive() {
+        return estActive;
     }
 
     /**

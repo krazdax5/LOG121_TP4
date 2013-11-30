@@ -23,6 +23,8 @@ public class VueActive2 extends JPanel implements Observer {
     private int largeur;
     private static VueActive2 instance;
 
+    private boolean estActive;
+
     @Override
     public void update(Observable observable, Object o) {
         ImageConcrete image = (ImageConcrete) observable;
@@ -77,5 +79,13 @@ public class VueActive2 extends JPanel implements Observer {
 //        }
     }
 
+
+    public void setActive(boolean estActive) {
+        this.estActive = estActive;
+    }
+
+    public boolean estActive() {
+        return estActive;
+    }
 
 }

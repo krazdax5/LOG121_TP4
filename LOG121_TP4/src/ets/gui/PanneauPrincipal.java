@@ -3,6 +3,8 @@ package ets.gui;
 import ets.*;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Observable;
@@ -135,53 +137,27 @@ public class PanneauPrincipal extends JPanel implements Observer {
         tabbedPane.addTab("Vue Active 2", null, vueActive2, "Vue Active 2");
         // ******** Fin vue active 2 *******
 
+
+        tabbedPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent changeEvent) {
+                if(tabbedPane.getSelectedComponent().equals(instanceVueActive1)){
+                    instanceVueActive1.setActive(true);
+                    vueActive2.setActive(false);
+                }
+                if(tabbedPane.getSelectedComponent().equals(vueActive2)) {
+                    vueActive2.setActive(true);
+                    instanceVueActive1.setActive(false);
+                }
+                if(tabbedPane.getSelectedComponent().equals(vueReduite)) {
+                    vueActive2.setActive(false);
+                    instanceVueActive1.setActive(false);
+                }
+            }
+        });
+
         this.add(tabbedPane);
 
-//            this.add(tabbedPane);
-//            this.add(tabbedPane1);
-
-//            this.setLayout(new BorderLayout());
-//
-//            this.setBackground(Color.LIGHT_GRAY);
-//
-//
-//            vueActive1 = new JPanel();
-//
-//            vueActive1.setBackground(Color.BLACK);
-//
-//            Dimension dimEssai = new Dimension();
-//            dimEssai.setSize(400,400);
-//            vueActive1.setPreferredSize(dimEssai);
-//
-//
-//            this.add(vueActive1);
-//
-//            vueActive2 = new JPanel();
-//
-//            vueActive2.setBackground(Color.GRAY);
-//
-//            vueActive2.setPreferredSize(dimEssai);
-//
-//
-//            this.add(vueActive2);
-//
-////            JPanel vueReduite = new JPanel();
-//
-//            imageInitiale = ImageConcrete.createImage("/Users/Mathieu/Desktop/Automne 2013.png");
-//
-//            vueReduite = new VueReduite(imageInitiale.getTheImage(), 125, 125);
-//
-//            imageInitiale.addObserver(vueReduite);
-//
-//            vueReduite.setBackground(Color.WHITE);
-//
-//            Dimension dimReduite = new Dimension();
-//            dimReduite.setSize(125, 125);
-//
-//            vueReduite.setPreferredSize(dimReduite);
-//
-//
-//            this.add(vueReduite);
 
     }
 

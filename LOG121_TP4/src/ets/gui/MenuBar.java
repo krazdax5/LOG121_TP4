@@ -25,13 +25,13 @@ public class MenuBar extends JMenuBar {
         JMenu menuFichier = new JMenu();
         menuFichier.setText("Fichier");
 
-        JMenuItem ouvrir = new JMenuItem();
-        ouvrir.setText("Ouvrir Image...");
-        ouvrir.setAccelerator(KeyStroke.getKeyStroke(
+        JMenuItem ouvrirImage = new JMenuItem();
+        ouvrirImage.setText("Ouvrir Image...");
+        ouvrirImage.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, Toolkit.getDefaultToolkit().
                 getMenuShortcutKeyMask()));
 
-        ouvrir.addActionListener(new ActionListener() {
+        ouvrirImage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
@@ -39,14 +39,32 @@ public class MenuBar extends JMenuBar {
 
                 int valeurRetour = fileChooser.showOpenDialog(null);
 
-                if(valeurRetour == JFileChooser.APPROVE_OPTION) {
-                    String fichierChoisi = fileChooser.getSelectedFile().getAbsolutePath();
-                    Controlleur.getControlleur().changerImage(fichierChoisi);
+                if (valeurRetour == JFileChooser.APPROVE_OPTION) {
+                    String imageChoisie = fileChooser.getSelectedFile().getAbsolutePath();
+                    Controlleur.getControlleur().changerImage(imageChoisie);
                 }
             }
         });
 
-        menuFichier.add(ouvrir);
+        menuFichier.add(ouvrirImage);
+
+        JMenuItem ouvrirPerspective = new JMenuItem();
+        ouvrirPerspective.setText("Ouvrir perspective...");
+        ouvrirPerspective.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                final JFileChooser fileChooser = new JFileChooser();
+
+                int valeurRetour = fileChooser.showOpenDialog(null);
+
+                if (valeurRetour == JFileChooser.APPROVE_OPTION) {
+                    String perspectiveChoisie = fileChooser.getSelectedFile().getAbsolutePath();
+                    Controlleur.getControlleur().changerPerspective(perspectiveChoisie);
+                }
+            }
+        });
+
+        menuFichier.add(ouvrirPerspective);
 
         JMenuItem enregistrer = new JMenuItem();
         enregistrer.setText("Enregistrer...");
