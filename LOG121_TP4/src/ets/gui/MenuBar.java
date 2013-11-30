@@ -8,13 +8,16 @@ import java.awt.event.*;
 import java.awt.image.renderable.ContextualRenderedImageFactory;
 
 /**
- * Created with IntelliJ IDEA.
- * User: lucie
- * Date: 2013-11-26
- * Time: 23:35
- * To change this template use File | Settings | File Templates.
+ * Classe qui s'occupe de la gestion du MenuBar
+ *
+ * Les lignes de codes sur le DefaultToolkit ont été inspirées des notes
+ * de cours de M. Pierre Belisle pour le cours INF111.
+ *
+ *          Historique des modifications
+ ***************************************************
+ * @author Mathieu Lachance
+ * 2013-11-
  */
-
 public class MenuBar extends JMenuBar {
 
     protected MenuBar() {
@@ -32,14 +35,13 @@ public class MenuBar extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                Controlleur controlleur = Controlleur.getControlleur();
                 final JFileChooser fileChooser = new JFileChooser();
 
                 int valeurRetour = fileChooser.showOpenDialog(null);
 
                 if(valeurRetour == JFileChooser.APPROVE_OPTION) {
                     String fichierChoisi = fileChooser.getSelectedFile().getAbsolutePath();
-                    controlleur.changerImage(fichierChoisi);
+                    Controlleur.getControlleur().changerImage(fichierChoisi);
                 }
             }
         });
@@ -67,8 +69,7 @@ public class MenuBar extends JMenuBar {
         defaire.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur controlleur = Controlleur.getControlleur();
-                controlleur.defaire();
+                Controlleur.getControlleur().defaire();
             }
         });
 
@@ -82,8 +83,7 @@ public class MenuBar extends JMenuBar {
         refaire.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur controlleur = Controlleur.getControlleur();
-                controlleur.refaire();
+                Controlleur.getControlleur().refaire();
             }
         });
 
@@ -99,8 +99,7 @@ public class MenuBar extends JMenuBar {
         copier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur controlleur = Controlleur.getControlleur();
-                controlleur.ctrlC(null);
+                Controlleur.getControlleur().ctrlC(null);
             }
         });
 
@@ -114,8 +113,7 @@ public class MenuBar extends JMenuBar {
         coller.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur controlleur = Controlleur.getControlleur();
-                controlleur.ctrlV();
+                Controlleur.getControlleur().ctrlV();
             }
         });
 
@@ -139,11 +137,7 @@ public class MenuBar extends JMenuBar {
         zoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur controlleur = Controlleur.getControlleur();
-
-                controlleur.zoomer(PanneauPrincipal.getPanneauPrincipal().instanceVueActive1.getPerspectiveVueActive1());
-
-
+                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().instanceVueActive1.getPerspectiveVueActive1(),1);
             }
         });
 
@@ -158,8 +152,7 @@ public class MenuBar extends JMenuBar {
         deplacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controlleur controlleur = Controlleur.getControlleur();
-               // controlleur.deplacer(PanneauPrincipal.getPanneauPrincipal().instanceVueActive1.getPerspectiveVueActive1(0,0));
+//                Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().instanceVueActive1.getPerspectiveVueActive1(0,0));
             }
         });
 

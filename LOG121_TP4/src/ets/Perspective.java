@@ -74,4 +74,8 @@ public class Perspective extends Observable {
     public int getEchelle(){
         return echelle;
     }
+
+    public String toString() {
+        return "perspective";
+    }
 }

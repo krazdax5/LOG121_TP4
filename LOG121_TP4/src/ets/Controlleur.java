@@ -56,8 +56,8 @@ public class Controlleur {
         this.image.setImage(nouvelleImage);
     }
 
-    public void zoomer(Perspective perspective) {
-        gestionnaire.zommer(perspective);
+    public void zoomer(Perspective perspective, int echelle) {
+        gestionnaire.zommer(perspective, echelle);
     }
 
     public void deplacer(Perspective perspective, int offsetX, int offsetY) {

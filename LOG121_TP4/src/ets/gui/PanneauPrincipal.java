@@ -4,19 +4,17 @@ import ets.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created with IntelliJ IDEA.
- * User: lucie
- * Date: 2013-11-26
- * Time: 23:39
- * To change this template use File | Settings | File Templates.
+ *
+ *
+ *          Historique des modifications
+ ***************************************************
+ * @author
+ * 2013-11-
  */
 public class PanneauPrincipal extends JPanel implements Observer {
 
@@ -71,6 +69,56 @@ public class PanneauPrincipal extends JPanel implements Observer {
         instanceVueActive1 = new VueActive1(imageInitiale.getTheImage());
 
         instanceVueActive1.setPreferredSize(dimensionImage);
+
+        instanceVueActive1.addMouseMotionListener(new MouseMotionListener() {
+            @Override
+            public void mouseDragged(MouseEvent mouseEvent) {
+
+                Controlleur.getControlleur().deplacer(instanceVueActive1.getPerspectiveVueActive1(),
+                        (int)mouseEvent.getPoint().getX(),(int)mouseEvent.getPoint().getY());
+
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent mouseEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+
+        instanceVueActive1.addMouseWheelListener(new MouseWheelListener() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
+                Controlleur.getControlleur().zoomer(instanceVueActive1.getPerspectiveVueActive1(), mouseWheelEvent.getWheelRotation());
+            }
+        });
+
+        instanceVueActive1.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+                instanceVueActive1.setCursor(cursor);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
 
 
         tabbedPane.addTab("Vue Active 1", null, instanceVueActive1, "Vue Active 1");

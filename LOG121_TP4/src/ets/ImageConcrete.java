@@ -52,4 +52,8 @@ public class ImageConcrete extends Observable implements IImage {
         this.notifyObservers();
     }
 
+    public String toString() {
+        return "image";
+    }
+
 }

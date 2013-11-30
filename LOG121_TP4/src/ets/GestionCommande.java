@@ -98,8 +98,8 @@ public class GestionCommande {
         }
     }
 
-    public void zommer(Perspective perspective){
-        Zoom zoom = factory.createZoom(perspective);
+    public void zommer(Perspective perspective, int echelle){
+        Zoom zoom = factory.createZoom(perspective, echelle);
         zoom.executer();
 
 

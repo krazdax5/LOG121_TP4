@@ -14,8 +14,8 @@ import ets.commande.Zoom;
  */
 public class Factory {
 
-    public Zoom createZoom(Perspective perspective) {
-        return new Zoom(perspective);
+    public Zoom createZoom(Perspective perspective, int echelle) {
+        return new Zoom(perspective, echelle);
     }
 
     public Deplacer createDeplacer(Perspective perspective, int offsetX, int offsetY) {

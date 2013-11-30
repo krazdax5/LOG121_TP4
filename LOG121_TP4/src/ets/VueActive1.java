@@ -26,8 +26,16 @@ public class VueActive1 extends JPanel implements Observer {
 
     @Override
     public void update(Observable observable, Object o) {
-        ImageConcrete image = (ImageConcrete) observable;
-        this.setVueActive1(image.getTheImage());
+        if(observable.toString().equals("image")) {
+            ImageConcrete image = (ImageConcrete) observable;
+            this.setVueActive1(image.getTheImage());
+            this.repaint();
+        }
+        if(observable.toString().equals("perspective")) {
+            Perspective perspective = (Perspective) observable;
+            this.perspective = perspective;
+            this.repaint();
+        }
     }
 
     /**
@@ -37,6 +45,7 @@ public class VueActive1 extends JPanel implements Observer {
     public VueActive1(Image image){
         this.imageVueActive1 = image;
         this.perspective = new Perspective();
+        this.perspective.addObserver(this);
     }
 
     public static VueActive1 getVueActive1(){
@@ -44,7 +53,7 @@ public class VueActive1 extends JPanel implements Observer {
     }
 
     public Perspective getPerspectiveVueActive1(){
-        return this.perspective;
+        return perspective;
     }
     /**
      * Setter de la vueActive1
