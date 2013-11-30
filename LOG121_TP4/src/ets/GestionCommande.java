@@ -1,5 +1,6 @@
 package ets;
 
+import ets.commande.Deplacer;
 import ets.commande.InterfaceCommande;
 import ets.commande.Zoom;
 
@@ -47,7 +48,7 @@ public class GestionCommande {
      * Methode qui permet d'ajouter une commande a la pile de commandes
      * @param commande La commande a ajouter
      */
-    public InterfaceCommande ajouterCommande(InterfaceCommande commande) {
+    private InterfaceCommande ajouterCommande(InterfaceCommande commande) {
         return pileCommandes.push(commande);
     }
 
@@ -55,20 +56,12 @@ public class GestionCommande {
      * Methode qui permet de retirer une commande de la pile de commandes
      * et de l'ajouter a la pile de commandes defaites.
      */
-    public InterfaceCommande defaireCommande() {
-        try {
-            return pileCommandesDefaites.push(pileCommandes.pop());
-        } catch(EmptyStackException e) {
-            return null;
-        }
+    private InterfaceCommande defaireCommande() {
+        return pileCommandes.pop();
     }
 
-    public InterfaceCommande refaireCommande() {
-        try {
-            return pileCommandes.push(pileCommandesDefaites.pop());
-        } catch(EmptyStackException e) {
-            return null;
-        }
+    private InterfaceCommande refaireCommande() {
+        return pileCommandesDefaites.pop();
     }
 
     /**
@@ -91,9 +84,7 @@ public class GestionCommande {
     public void ctrlV(){
         if(!pileCopie.isEmpty()) {
             InterfaceCommande ctrlV = pileCopie.peek();
-
             ctrlV.executer();
-
             pileCommandes.push(pileCopie.peek());
         }
     }
@@ -101,22 +92,24 @@ public class GestionCommande {
     public void zommer(Perspective perspective, int echelle){
         Zoom zoom = factory.createZoom(perspective, echelle);
         zoom.executer();
-
+        this.ajouterCommande(zoom);
 
     }
     public void deplacer(Perspective perspective, int offsetX, int offsetY) {
-        factory.createDeplacer(perspective, offsetX, offsetY);
+        Deplacer deplace = factory.createDeplacer(perspective, offsetX, offsetY);
+        deplace.executer();
+        this.ajouterCommande(deplace);
     }
     public void refaire() {
         if(!pileCommandesDefaites.isEmpty()){
-            InterfaceCommande commandeRefaite = pileCommandesDefaites.pop();
+            InterfaceCommande commandeRefaite = this.refaireCommande();
             commandeRefaite.executer();
             pileCommandes.push(commandeRefaite);
         }
     }
     public void defaire() {
         if(!pileCommandes.isEmpty()){
-            InterfaceCommande commandeDefaite = pileCommandes.pop();
+            InterfaceCommande commandeDefaite = this.defaireCommande();
             commandeDefaite.defaire();
             pileCommandesDefaites.push(commandeDefaite);
         }
