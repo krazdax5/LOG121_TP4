@@ -2,10 +2,13 @@ package ets.gui;
 
 import ets.*;
 
+import javax.activation.MimetypesFileTypeMap;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -46,11 +49,12 @@ public class PanneauPrincipal extends JPanel implements Observer {
         String workingDir = System.getProperty("user.dir");
 
         if(os.equals("mac os x")){
-
-            imageInitiale = ImageConcrete.createImage(workingDir+"/src/ets/res/img/megan_fox.jpg");
+            File image = new File(workingDir+"/src/ets/res/img/megan_fox.jpg");
+            imageInitiale = ImageConcrete.createImage(image);
         }else {
             workingDir.replace("\\", "\\\\");
-            imageInitiale = ImageConcrete.createImage(workingDir+"\\LOG121_TP4\\src\\ets\\res\\img\\megan_fox.jpg");
+            File image = new File(workingDir+"\\LOG121_TP4\\src\\ets\\res\\img\\megan_fox.jpg");
+            imageInitiale = ImageConcrete.createImage(image);
         }
 
         int hauteur = imageInitiale.getTheImage().getHeight(null);
@@ -66,7 +70,6 @@ public class PanneauPrincipal extends JPanel implements Observer {
         vueReduite = VueReduite.getVueReduite();
 
         vueReduite.setImageReduite(imageInitiale.getTheImage());
-
 
         vueReduite.setPreferredSize(dimensionImage);
 

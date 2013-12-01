@@ -1,10 +1,14 @@
 package ets;
 
 import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
+import javax.activation.MimetypesFileTypeMap;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 /**
  * Patron : NullObject
@@ -31,23 +35,22 @@ public class ImageConcrete extends Observable implements IImage {
     /**
      * M&eactue;thode priv&eacute;
      */
-    private ImageConcrete(String adresse){
-        if(adresse != null) {
+    private ImageConcrete(File sourceImage){
+        if(sourceImage != null) {
             try{
-                File sourceImage = new File(adresse);
                 theImage = ImageIO.read(sourceImage);
             } catch(Exception ex){
-                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null,"Erreur lors de la lecture du fichier.");
             }
         }
     }
 
-    public static ImageConcrete createImage(String adresse) {
-        return new ImageConcrete(adresse);
+    public static ImageConcrete createImage(File sourceImage) {
+        return new ImageConcrete(sourceImage);
     }
 
-    public void setImage(String adresse) {
-        theImage = new ImageConcrete(adresse).getTheImage();
+    public void setImage(File sourceImage) {
+        theImage = new ImageConcrete(sourceImage).getTheImage();
         this.setChanged();
         this.notifyObservers();
     }

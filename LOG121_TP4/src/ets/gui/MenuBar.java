@@ -3,10 +3,14 @@ package ets.gui;
 import ets.Controlleur;
 import ets.Perspective;
 import ets.UtilitaireFichier;
+import ets.VueActive;
 
+import javax.activation.MimetypesFileTypeMap;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 
 /**
  * Classe qui s'occupe de la gestion du MenuBar
@@ -35,15 +39,33 @@ public class MenuBar extends JMenuBar {
         ouvrirImage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                boolean isAnImage = false;
 
-                final JFileChooser fileChooser = new JFileChooser();
+                int valeurRetour;
 
-                int valeurRetour = fileChooser.showOpenDialog(null);
+                do {
 
-                if (valeurRetour == JFileChooser.APPROVE_OPTION) {
-                    String imageChoisie = fileChooser.getSelectedFile().getAbsolutePath();
-                    Controlleur.getControlleur().changerImage(imageChoisie);
-                }
+                    isAnImage = false;
+
+                    final JFileChooser fileChooser = new JFileChooser();
+
+                    valeurRetour = fileChooser.showOpenDialog(null);
+
+                    if (valeurRetour == JFileChooser.APPROVE_OPTION) {
+                        String imageChoisie = fileChooser.getSelectedFile().getAbsolutePath();
+                        File nouvelleImage = new File(imageChoisie);
+
+                        String mimetype= new MimetypesFileTypeMap().getContentType(nouvelleImage);
+                        String type = mimetype.split("/")[0];
+                        if(type.equals("image")){
+                            Controlleur.getControlleur().changerImage(nouvelleImage);
+                            isAnImage = true;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ceci n'est pas une image veuillez recommencer.");
+                            isAnImage=false;
+                        }
+                    }
+                }while(valeurRetour != JFileChooser.CANCEL_OPTION && !isAnImage);
             }
         });
 
@@ -214,9 +236,10 @@ public class MenuBar extends JMenuBar {
                     try {
                         int nouveauOffsetX = Integer.parseInt(translationHorizontale.getText());
                         int nouveauOffsetY = Integer.parseInt(translationVerticale.getText());
-                        int ancienOffsetX = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().getCornerImageX();
-                        int ancienOffsetY = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().getCornerImageY();
-                        Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1(),
+                        VueActive vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
+                        int ancienOffsetX = vueActive.getPerspectiveVueActive1().getCornerImageX();
+                        int ancienOffsetY = vueActive.getPerspectiveVueActive1().getCornerImageY();
+                        Controlleur.getControlleur().deplacer(vueActive.getPerspectiveVueActive1(),
                                 ancienOffsetX + nouveauOffsetX, ancienOffsetY + nouveauOffsetY);
                     } catch(NumberFormatException exception){
                         JOptionPane.showMessageDialog(null,"Veuillez entrer un nombre S.V.P.");
@@ -236,9 +259,10 @@ public class MenuBar extends JMenuBar {
         etatInitial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().setEchelle(1);
-                PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().setCornerPerspective(0,0);
-                PanneauPrincipal.getPanneauPrincipal().getVueChoisie().repaint();
+                VueActive vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
+                vueActive.getPerspectiveVueActive1().setEchelle(1);
+                vueActive.getPerspectiveVueActive1().setCornerPerspective(0,0);
+                vueActive.repaint();
             }
         });
 

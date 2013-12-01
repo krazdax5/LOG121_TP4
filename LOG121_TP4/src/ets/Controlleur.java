@@ -4,6 +4,8 @@ package ets;
 import ets.gui.FenetrePrincipale;
 import ets.gui.PanneauPrincipal;
 
+import java.io.File;
+
 /**
  *
  *
@@ -52,8 +54,8 @@ public class Controlleur {
         return controlleur;
     }
 
-    public void changerImage(String adresse) {
-        this.image.setImage(adresse);
+    public void changerImage(File sourceImage) {
+        this.image.setImage(sourceImage);
     }
 
     public void changerPerspective(String nouvellePerspective) {
@@ -61,8 +63,9 @@ public class Controlleur {
         int echelle = perspective.getEchelle();
         int offsetX = perspective.getCornerImageX();
         int offsetY = perspective.getCornerImageY();
-        panneauPrincipal.getVueChoisie().getPerspectiveVueActive1().setEchelle(echelle);
-        panneauPrincipal.getVueChoisie().getPerspectiveVueActive1().setCornerPerspective(offsetX,offsetY);
+        VueActive vueActive = panneauPrincipal.getVueChoisie();
+        vueActive.getPerspectiveVueActive1().setEchelle(echelle);
+        vueActive.getPerspectiveVueActive1().setCornerPerspective(offsetX,offsetY);
         panneauPrincipal.repaint();
     }
 

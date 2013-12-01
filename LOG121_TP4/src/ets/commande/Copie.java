@@ -1,6 +1,7 @@
 package ets.commande;
 
 import ets.Perspective;
+import ets.VueActive;
 import ets.gui.PanneauPrincipal;
 
 /**
@@ -27,9 +28,10 @@ public class Copie implements InterfaceCommande {
 
     @Override
     public void executer() {
-        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().setEchelle(echelle);
-        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().setCornerPerspective(offsetX, offsetY);
-        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().repaint();
+        VueActive vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
+        vueActive.getPerspectiveVueActive1().setEchelle(echelle);
+        vueActive.getPerspectiveVueActive1().setCornerPerspective(offsetX, offsetY);
+        vueActive.repaint();
     }
 
     @Override
