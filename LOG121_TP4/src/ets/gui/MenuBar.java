@@ -5,7 +5,6 @@ import ets.Controlleur;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.renderable.ContextualRenderedImageFactory;
 
 /**
  * Classe qui s'occupe de la gestion du MenuBar
@@ -155,7 +154,7 @@ public class MenuBar extends JMenuBar {
         zoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().instanceVueActive1.getPerspectiveVueActive1(),1);
+                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive.getPerspectiveVueActive1(),1);
             }
         });
 
@@ -170,7 +169,7 @@ public class MenuBar extends JMenuBar {
         deplacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().instanceVueActive1.getPerspectiveVueActive1(0,0));
+//                Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().vueActive.getPerspectiveVueActive1(0,0));
             }
         });
 

@@ -4,9 +4,6 @@ package ets;
 import ets.gui.FenetrePrincipale;
 import ets.gui.PanneauPrincipal;
 
-import java.awt.*;
-import java.util.Observer;
-
 /**
  *
  *
@@ -40,8 +37,8 @@ public class Controlleur {
         image = ImageConcrete.createImage(null);
         image.addObserver(VueReduite.getVueReduite());
 
-        image.addObserver(VueActive1.getVueActive1());
-        image.addObserver(VueActive2.getVueActive2());
+        image.addObserver(panneauPrincipal.getVueActive());
+        image.addObserver(panneauPrincipal.getVueActive2());
 
         image.addObserver(FenetrePrincipale.getFenetrePrincipale());
         image.addObserver(panneauPrincipal);
@@ -61,7 +58,7 @@ public class Controlleur {
 
     public void changerPerspective(String nouvellePerspective) {
         Perspective perspective = UtilitaireFichier.recuperePerspective(nouvellePerspective);
-        PanneauPrincipal.instanceVueActive1.setPerspective(perspective);
+        panneauPrincipal.getVueActive().setPerspective(perspective);
     }
 
     public void zoomer(Perspective perspective, int echelle) {

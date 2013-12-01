@@ -6,7 +6,6 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -24,8 +23,8 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
     JTabbedPane tabbedPane;
 
-    public static VueActive1 instanceVueActive1;
-    protected VueActive1 vueActive2;
+    protected VueActive vueActive;
+    protected VueActive vueActive2;
     protected VueReduite vueReduite;
 
     public static PanneauPrincipal getPanneauPrincipal() {
@@ -77,18 +76,16 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
 
         //******* Debut vue active 1 **********
-        instanceVueActive1 = new VueActive1(imageInitiale.getTheImage());
+        vueActive = new VueActive(imageInitiale.getTheImage());
 
-        tabbedPane.addTab("Vue Active 1", null, instanceVueActive1, "Vue Active 1");
+        tabbedPane.addTab("Vue Active 1", null, vueActive, "Vue Active 1");
         //****** Fin vue active 1 ***********
 
        //******* Debut vue active 2 **********
 
-        vueActive2 = new VueActive1(imageInitiale.getTheImage());
+        vueActive2 = new VueActive(imageInitiale.getTheImage());
 
         vueActive2.setVueActive1(imageInitiale.getTheImage());
-
-        vueActive2.setPreferredSize(dimensionImage);
 
         tabbedPane.addTab("Vue Active 2", null, vueActive2, "Vue Active 2");
         // ******** Fin vue active 2 *******
@@ -97,17 +94,17 @@ public class PanneauPrincipal extends JPanel implements Observer {
         tabbedPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent changeEvent) {
-                if(tabbedPane.getSelectedComponent().equals(instanceVueActive1)){
-                    instanceVueActive1.setActive(true);
+                if(tabbedPane.getSelectedComponent().equals(vueActive)){
+                    vueActive.setActive(true);
                     vueActive2.setActive(false);
                 }
                 if(tabbedPane.getSelectedComponent().equals(vueActive2)) {
                     vueActive2.setActive(true);
-                    instanceVueActive1.setActive(false);
+                    vueActive.setActive(false);
                 }
                 if(tabbedPane.getSelectedComponent().equals(vueReduite)) {
                     vueActive2.setActive(false);
-                    instanceVueActive1.setActive(false);
+                    vueActive.setActive(false);
                 }
             }
         });
@@ -115,6 +112,22 @@ public class PanneauPrincipal extends JPanel implements Observer {
         this.add(tabbedPane);
 
 
+    }
+
+    public VueActive getVueActive() {
+        return vueActive;
+    }
+
+    public VueActive getVueActive2() {
+        return vueActive2;
+    }
+
+    public VueActive getVueChoisie() {
+        if(vueActive.estActive())
+            return vueActive;
+        if(vueActive2.estActive())
+            return vueActive2;
+        return null;
     }
 
     @Override

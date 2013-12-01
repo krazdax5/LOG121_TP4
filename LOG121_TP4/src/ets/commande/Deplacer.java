@@ -32,7 +32,7 @@ public class Deplacer implements InterfaceCommande {
     @Override
     public void executer() {
         perspective.setCornerPerspective(offsetX, offsetY);
-//        PanneauPrincipal.instanceVueActive1.repaint();
+//        PanneauPrincipal.vueActive.repaint();
 
     }
 

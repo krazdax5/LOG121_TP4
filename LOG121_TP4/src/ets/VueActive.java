@@ -21,7 +21,7 @@ import java.util.Observer;
  * @author Jacob Marcil
  * 2013-11-26
  */
-public class VueActive1 extends JPanel implements Observer {
+public class VueActive extends JPanel implements Observer {
 
     private boolean estActive;
     private Image imageVueActive1;
@@ -45,7 +45,7 @@ public class VueActive1 extends JPanel implements Observer {
      * Constructeur
      * @param image
      */
-    public VueActive1(Image image){
+    public VueActive(Image image){
         this.imageVueActive1 = image;
         this.perspective = new Perspective();
         this.perspective.addObserver(this);
@@ -84,12 +84,12 @@ public class VueActive1 extends JPanel implements Observer {
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
                 Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
-                getVueActive1().setCursor(cursor);
+                setCursor(cursor);
             }
 
             public void setPosition(MouseEvent mouseEvent) {
                 Controlleur.getControlleur().deplacer(perspective,premierX+mouseEvent.getX(),premierY+mouseEvent.getY());
-                getVueActive1().repaint();
+                repaint();
             }
         };
 
@@ -98,15 +98,11 @@ public class VueActive1 extends JPanel implements Observer {
         this.addMouseWheelListener(myMouseAdapter);
     }
 
-    public static VueActive1 getVueActive1(){
-        return PanneauPrincipal.instanceVueActive1;
-    }
-
     public Perspective getPerspectiveVueActive1(){
         return perspective;
     }
     /**
-     * Setter de la vueActive1
+     * Setter de la vueActive
      * @param image
      */
     public void setVueActive1(Image image){
