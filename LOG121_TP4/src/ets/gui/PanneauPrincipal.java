@@ -23,7 +23,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
     JTabbedPane tabbedPane;
 
-    protected VueActive vueActive;
+    protected VueActive vueActive1;
     protected VueActive vueActive2;
     protected VueReduite vueReduite;
 
@@ -76,16 +76,14 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
 
         //******* Debut vue active 1 **********
-        vueActive = new VueActive(imageInitiale.getTheImage());
+        vueActive1 = new VueActive(imageInitiale.getTheImage());
 
-        tabbedPane.addTab("Vue Active 1", null, vueActive, "Vue Active 1");
+        tabbedPane.addTab("Vue Active 1", null, vueActive1, "Vue Active 1");
         //****** Fin vue active 1 ***********
 
        //******* Debut vue active 2 **********
 
         vueActive2 = new VueActive(imageInitiale.getTheImage());
-
-        vueActive2.setVueActive1(imageInitiale.getTheImage());
 
         tabbedPane.addTab("Vue Active 2", null, vueActive2, "Vue Active 2");
         // ******** Fin vue active 2 *******
@@ -94,17 +92,17 @@ public class PanneauPrincipal extends JPanel implements Observer {
         tabbedPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent changeEvent) {
-                if(tabbedPane.getSelectedComponent().equals(vueActive)){
-                    vueActive.setActive(true);
+                if(tabbedPane.getSelectedComponent().equals(vueActive1)){
+                    vueActive1.setActive(true);
                     vueActive2.setActive(false);
                 }
                 if(tabbedPane.getSelectedComponent().equals(vueActive2)) {
                     vueActive2.setActive(true);
-                    vueActive.setActive(false);
+                    vueActive1.setActive(false);
                 }
                 if(tabbedPane.getSelectedComponent().equals(vueReduite)) {
                     vueActive2.setActive(false);
-                    vueActive.setActive(false);
+                    vueActive1.setActive(false);
                 }
             }
         });
@@ -114,8 +112,8 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
     }
 
-    public VueActive getVueActive() {
-        return vueActive;
+    public VueActive getVueActive1() {
+        return vueActive1;
     }
 
     public VueActive getVueActive2() {
@@ -123,8 +121,8 @@ public class PanneauPrincipal extends JPanel implements Observer {
     }
 
     public VueActive getVueChoisie() {
-        if(vueActive.estActive())
-            return vueActive;
+        if(vueActive1.estActive())
+            return vueActive1;
         if(vueActive2.estActive())
             return vueActive2;
         return null;

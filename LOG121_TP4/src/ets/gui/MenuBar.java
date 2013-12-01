@@ -116,7 +116,7 @@ public class MenuBar extends JMenuBar {
         copier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().ctrlC(null);
+                Controlleur.getControlleur().ctrlC(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1());
             }
         });
 
@@ -154,7 +154,7 @@ public class MenuBar extends JMenuBar {
         zoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive.getPerspectiveVueActive1(),1);
+                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1(),1);
             }
         });
 
@@ -169,7 +169,7 @@ public class MenuBar extends JMenuBar {
         deplacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().vueActive.getPerspectiveVueActive1(0,0));
+//                Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1(0,0));
             }
         });
 

@@ -1,8 +1,6 @@
 package ets;
 
-import ets.commande.Deplacer;
-import ets.commande.InterfaceCommande;
-import ets.commande.Zoom;
+import ets.commande.*;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
@@ -32,7 +30,7 @@ public class GestionCommande {
     private Stack<InterfaceCommande> pileCommandesDefaites;
 
 
-    private Stack<InterfaceCommande> pileCopie;
+    private Stack<Copie> pileCopie;
 
 
     /**
@@ -42,6 +40,7 @@ public class GestionCommande {
         factory = new Factory();
         pileCommandes = new Stack<InterfaceCommande>();
         pileCommandesDefaites = new Stack<InterfaceCommande>();
+        pileCopie = new Stack<Copie>();
     }
 
     /**
@@ -70,7 +69,7 @@ public class GestionCommande {
      */
     public void ctrlC(Perspective perspective){
 
-        InterfaceCommande ctrlC = factory.createCopie(perspective);
+        Copie ctrlC = factory.createCopie(perspective);
         if(!pileCopie.isEmpty())
             pileCopie.pop();
         pileCopie.push(ctrlC);
@@ -83,7 +82,7 @@ public class GestionCommande {
      */
     public void ctrlV(){
         if(!pileCopie.isEmpty()) {
-            InterfaceCommande ctrlV = pileCopie.peek();
+            Copie ctrlV = pileCopie.peek();
             ctrlV.executer();
             pileCommandes.push(pileCopie.peek());
         }

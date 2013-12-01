@@ -1,6 +1,6 @@
 package ets;
 
-import ets.commande.Coller;
+import ets.commande.Copie;
 import ets.commande.Deplacer;
 import ets.commande.Zoom;
 
@@ -22,7 +22,7 @@ public class Factory {
         return new Deplacer(perspective,offsetX, offsetY);
     }
 
-    public Coller createCopie(Perspective perspective){
-        return new Coller(perspective);
+    public Copie createCopie(Perspective perspective){
+        return new Copie(perspective);
     }
 }

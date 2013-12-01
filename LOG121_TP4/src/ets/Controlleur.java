@@ -37,7 +37,7 @@ public class Controlleur {
         image = ImageConcrete.createImage(null);
         image.addObserver(VueReduite.getVueReduite());
 
-        image.addObserver(panneauPrincipal.getVueActive());
+        image.addObserver(panneauPrincipal.getVueActive1());
         image.addObserver(panneauPrincipal.getVueActive2());
 
         image.addObserver(FenetrePrincipale.getFenetrePrincipale());
@@ -58,7 +58,7 @@ public class Controlleur {
 
     public void changerPerspective(String nouvellePerspective) {
         Perspective perspective = UtilitaireFichier.recuperePerspective(nouvellePerspective);
-        panneauPrincipal.getVueActive().setPerspective(perspective);
+        panneauPrincipal.getVueActive1().setPerspective(perspective);
     }
 
     public void zoomer(Perspective perspective, int echelle) {

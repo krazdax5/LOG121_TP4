@@ -102,7 +102,7 @@ public class VueActive extends JPanel implements Observer {
         return perspective;
     }
     /**
-     * Setter de la vueActive
+     * Setter de la vueActive1
      * @param image
      */
     public void setVueActive1(Image image){
