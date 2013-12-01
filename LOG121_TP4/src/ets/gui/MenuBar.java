@@ -2,6 +2,7 @@ package ets.gui;
 
 import ets.Controlleur;
 import ets.Perspective;
+import ets.UtilitaireFichier;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,12 +54,13 @@ public class MenuBar extends JMenuBar {
         ouvrirPerspective.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                final JFileChooser fileChooser = new JFileChooser();
+                final JFileChooser fcOpen = new JFileChooser();
+                fcOpen.setDialogTitle("Ouvrir une perspective (.pers)");
 
-                int valeurRetour = fileChooser.showOpenDialog(null);
+                int valeurRetour = fcOpen.showOpenDialog(null);
 
                 if (valeurRetour == JFileChooser.APPROVE_OPTION) {
-                    String perspectiveChoisie = fileChooser.getSelectedFile().getAbsolutePath();
+                    String perspectiveChoisie = fcOpen.getSelectedFile().getAbsolutePath();
                     Controlleur.getControlleur().changerPerspective(perspectiveChoisie);
                 }
             }
@@ -67,10 +69,38 @@ public class MenuBar extends JMenuBar {
         menuFichier.add(ouvrirPerspective);
 
         JMenuItem enregistrer = new JMenuItem();
-        enregistrer.setText("Enregistrer...");
+        enregistrer.setText("Enregistrer perspective...");
         enregistrer.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_S, Toolkit.getDefaultToolkit().
                 getMenuShortcutKeyMask()));
+        enregistrer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                final JFileChooser fcSave = new JFileChooser();
+                fcSave.setDialogTitle("Sauvegarder votre animation (.ani)");
+
+                int valeurRetour = fcSave.showSaveDialog(null);
+                if(valeurRetour == JFileChooser.APPROVE_OPTION) {
+
+                    String adresse;
+                    String os = System.getProperty("os.name").toLowerCase();
+
+                    if(os.equals("mac os x")){
+                        adresse = fcSave.getCurrentDirectory() + "/" + fcSave.getSelectedFile().getName();
+                        UtilitaireFichier.sauvegarderPerspective(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1(),adresse);
+
+                    }else{
+                        String fichier = fcSave.getSelectedFile().getAbsolutePath();
+                        adresse = fichier.replace("\\", "\\\\");
+                        UtilitaireFichier.sauvegarderPerspective(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1(),adresse);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null,"L'emplacement entre est erronne ou il existe deja une fichier ...");
+                }
+            }
+        });
 
         menuFichier.add(enregistrer);
 
@@ -117,7 +147,7 @@ public class MenuBar extends JMenuBar {
         copier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().ctrlC(null);
+                Controlleur.getControlleur().ctrlC(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1());
             }
         });
 
@@ -134,6 +164,8 @@ public class MenuBar extends JMenuBar {
                 Controlleur.getControlleur().ctrlV();
             }
         });
+
+        menuEdition.add(coller);
 
         this.add(menuEdition);
 
@@ -184,8 +216,8 @@ public class MenuBar extends JMenuBar {
                         int nouveauOffsetY = Integer.parseInt(translationVerticale.getText());
                         int ancienOffsetX = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().getCornerImageX();
                         int ancienOffsetY = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().getCornerImageY();
-                    Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1(),
-                            ancienOffsetX + nouveauOffsetX, ancienOffsetY + nouveauOffsetY);
+                        Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1(),
+                                ancienOffsetX + nouveauOffsetX, ancienOffsetY + nouveauOffsetY);
                     } catch(NumberFormatException exception){
                         JOptionPane.showMessageDialog(null,"Veuillez entrer un nombre S.V.P.");
                         actionPerformed(e);
@@ -204,7 +236,8 @@ public class MenuBar extends JMenuBar {
         etatInitial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                PanneauPrincipal.getPanneauPrincipal().getVueChoisie().setPerspective(new Perspective());
+                PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().setEchelle(1);
+                PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().setCornerPerspective(0,0);
                 PanneauPrincipal.getPanneauPrincipal().getVueChoisie().repaint();
             }
         });

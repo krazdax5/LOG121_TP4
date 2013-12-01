@@ -14,14 +14,22 @@ import ets.gui.PanneauPrincipal;
 public class Copie implements InterfaceCommande {
 
     private Perspective perspective;
+    private int echelle;
+    private int offsetX;
+    private int offsetY;
 
     public Copie(Perspective perspective) {
         this.perspective = perspective;
+        this.echelle = perspective.getEchelle();
+        this.offsetX = perspective.getCornerImageX();
+        this.offsetY = perspective.getCornerImageY();
     }
 
     @Override
     public void executer() {
-        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().setPerspective(perspective);
+        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().setEchelle(echelle);
+        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().setCornerPerspective(offsetX, offsetY);
+        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().repaint();
     }
 
     @Override

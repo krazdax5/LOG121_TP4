@@ -58,7 +58,12 @@ public class Controlleur {
 
     public void changerPerspective(String nouvellePerspective) {
         Perspective perspective = UtilitaireFichier.recuperePerspective(nouvellePerspective);
-        panneauPrincipal.getVueActive1().setPerspective(perspective);
+        int echelle = perspective.getEchelle();
+        int offsetX = perspective.getCornerImageX();
+        int offsetY = perspective.getCornerImageY();
+        panneauPrincipal.getVueChoisie().getPerspectiveVueActive1().setEchelle(echelle);
+        panneauPrincipal.getVueChoisie().getPerspectiveVueActive1().setCornerPerspective(offsetX,offsetY);
+        panneauPrincipal.repaint();
     }
 
     public void zoomer(Perspective perspective, int echelle) {

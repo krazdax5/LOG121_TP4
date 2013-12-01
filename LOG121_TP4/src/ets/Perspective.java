@@ -4,6 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.Observable;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Observable;
  * @author Jacob Marcil
  * 2013-11-26
  */
-public class Perspective extends Observable {
+public class Perspective extends Observable implements Serializable{
 
 
     private Point2D offset;
@@ -66,9 +67,9 @@ public class Perspective extends Observable {
      */
     public void setEchelle(int nouvelleEchelle){
         if(nouvelleEchelle > 0) {
-        echelle = nouvelleEchelle;
-        setChanged();
-        notifyObservers();
+            echelle = nouvelleEchelle;
+            setChanged();
+            notifyObservers();
         }
     }
 

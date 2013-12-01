@@ -35,8 +35,7 @@ public class VueActive extends JPanel implements Observer {
             this.repaint();
         }
         if(observable.toString().equals("perspective")) {
-            Perspective perspective = (Perspective) observable;
-            this.perspective = perspective;
+            this.perspective = (Perspective) observable;
             this.repaint();
         }
     }
@@ -108,10 +107,6 @@ public class VueActive extends JPanel implements Observer {
     public void setVueActive1(Image image){
         this.imageVueActive1 = image;
         this.perspective = new Perspective();
-    }
-
-    public void setPerspective(Perspective perspective) {
-        this.perspective = perspective;
     }
 
     public void setActive(boolean estActive) {

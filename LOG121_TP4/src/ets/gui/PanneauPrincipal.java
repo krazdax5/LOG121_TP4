@@ -123,9 +123,13 @@ public class PanneauPrincipal extends JPanel implements Observer {
     public VueActive getVueChoisie() {
         if(vueActive1.estActive())
             return vueActive1;
-        if(vueActive2.estActive())
+        else if(vueActive2.estActive())
             return vueActive2;
-        return null;
+        else {
+            JOptionPane.showMessageDialog(null,"La vue reduite est presentement selectionnee\n" +
+                    "La vue active 1 a ete choisie alors...");
+            return vueActive1;
+        }
     }
 
     @Override
