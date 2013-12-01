@@ -40,10 +40,18 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
         tabbedPane = new JTabbedPane();
 
+        ImageConcrete imageInitiale;
+
+        String os = System.getProperty("os.name").toLowerCase();
 
         String workingDir = System.getProperty("user.dir");
 
-        ImageConcrete imageInitiale = ImageConcrete.createImage("C:\\Users\\Jacob\\Documents\\log_121_TP4-REALSHIT\\LOG121_TP4\\src\\ets\\res\\img\\megan_fox.png");
+        if(os.equals("mac os x")){
+
+            imageInitiale = ImageConcrete.createImage(workingDir+"/src/ets/res/img/megan_fox.jpg");
+        }else {
+            imageInitiale = ImageConcrete.createImage(workingDir+"\\src\\ets\\res\\img\\megan_fox.png");
+        }
 
         int hauteur = imageInitiale.getTheImage().getHeight(null);
         int largeur = imageInitiale.getTheImage().getWidth(null);
@@ -75,8 +83,9 @@ public class PanneauPrincipal extends JPanel implements Observer {
         instanceVueActive1.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent mouseEvent) {
-                Controlleur.getControlleur().deplacer(instanceVueActive1.getPerspectiveVueActive1(),
-                        mouseEvent.getX()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageX(),mouseEvent.getY()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageY());
+//                Controlleur.getControlleur().deplacer(instanceVueActive1.getPerspectiveVueActive1(),
+//                        mouseEvent.getX()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageX(),mouseEvent.getY()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageY());
+
             }
 
             @Override
