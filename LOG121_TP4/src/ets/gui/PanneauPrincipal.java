@@ -50,7 +50,8 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
             imageInitiale = ImageConcrete.createImage(workingDir+"/src/ets/res/img/megan_fox.jpg");
         }else {
-            imageInitiale = ImageConcrete.createImage(workingDir+"\\src\\ets\\res\\img\\megan_fox.png");
+            workingDir.replace("\\", "\\\\");
+            imageInitiale = ImageConcrete.createImage(workingDir+"\\LOG121_TP4\\src\\ets\\res\\img\\megan_fox.jpg");
         }
 
         int hauteur = imageInitiale.getTheImage().getHeight(null);
@@ -79,13 +80,11 @@ public class PanneauPrincipal extends JPanel implements Observer {
         instanceVueActive1 = new VueActive1(imageInitiale.getTheImage());
 
         instanceVueActive1.setPreferredSize(dimensionImage);
-
         instanceVueActive1.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent mouseEvent) {
 //                Controlleur.getControlleur().deplacer(instanceVueActive1.getPerspectiveVueActive1(),
 //                        mouseEvent.getX()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageX(),mouseEvent.getY()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageY());
-
             }
 
             @Override
