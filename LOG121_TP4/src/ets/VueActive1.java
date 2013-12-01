@@ -5,8 +5,10 @@ import ets.gui.PanneauPrincipal;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.RescaleOp;
 import java.util.Observable;
@@ -47,6 +49,53 @@ public class VueActive1 extends JPanel implements Observer {
         this.imageVueActive1 = image;
         this.perspective = new Perspective();
         this.perspective.addObserver(this);
+
+        int hauteur = imageVueActive1.getHeight(null);
+        int largeur = imageVueActive1.getWidth(null);
+        Dimension dimensionImage = new Dimension(largeur, hauteur);
+
+        this.setPreferredSize(dimensionImage);
+
+        MouseAdapter myMouseAdapter = new MouseAdapter() {
+
+            int premierX;
+            int premierY;
+
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+                premierX = perspective.getCornerImageX() - mouseEvent.getX();
+                premierY = perspective.getCornerImageY() - mouseEvent.getY();
+
+                setPosition(mouseEvent);
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent mouseEvent) {
+                setPosition(mouseEvent);
+            }
+
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
+                Controlleur.getControlleur().zoomer(perspective, mouseWheelEvent.getWheelRotation());
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+                getVueActive1().setCursor(cursor);
+            }
+
+            public void setPosition(MouseEvent mouseEvent) {
+                Controlleur.getControlleur().deplacer(perspective,premierX+mouseEvent.getX(),premierY+mouseEvent.getY());
+                getVueActive1().repaint();
+            }
+        };
+
+        this.addMouseListener(myMouseAdapter);
+        this.addMouseMotionListener(myMouseAdapter);
+        this.addMouseWheelListener(myMouseAdapter);
     }
 
     public static VueActive1 getVueActive1(){
@@ -62,7 +111,7 @@ public class VueActive1 extends JPanel implements Observer {
      */
     public void setVueActive1(Image image){
         this.imageVueActive1 = image;
-        this.perspective.setEchelle(1);
+        this.perspective = new Perspective();
     }
 
     public void setPerspective(Perspective perspective) {

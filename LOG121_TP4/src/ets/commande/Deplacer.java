@@ -25,12 +25,14 @@ public class Deplacer implements InterfaceCommande {
         this.offsetYInitial = perspective.getCornerImageY();
         this.offsetX = offsetX;
         this.offsetY = offsetY;
+
+
     }
 
     @Override
     public void executer() {
         perspective.setCornerPerspective(offsetX, offsetY);
-        PanneauPrincipal.instanceVueActive1.repaint();
+//        PanneauPrincipal.instanceVueActive1.repaint();
 
     }
 

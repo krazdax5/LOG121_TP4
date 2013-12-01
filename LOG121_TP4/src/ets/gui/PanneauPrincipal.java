@@ -25,7 +25,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
     JTabbedPane tabbedPane;
 
     public static VueActive1 instanceVueActive1;
-    protected VueActive2 vueActive2;
+    protected VueActive1 vueActive2;
     protected VueReduite vueReduite;
 
     public static PanneauPrincipal getPanneauPrincipal() {
@@ -79,55 +79,14 @@ public class PanneauPrincipal extends JPanel implements Observer {
         //******* Debut vue active 1 **********
         instanceVueActive1 = new VueActive1(imageInitiale.getTheImage());
 
-        instanceVueActive1.setPreferredSize(dimensionImage);
-
-        MouseAdapter myMouseAdapter = new MouseAdapter() {
-
-            int premierX;
-            int premierY;
-
-
-            @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                premierX = mouseEvent.getX();
-                premierY = mouseEvent.getY();
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent mouseEvent) {
-                int draggedX = mouseEvent.getX();
-                int draggedY = mouseEvent.getY();
-
-                Controlleur.getControlleur().deplacer(instanceVueActive1.getPerspectiveVueActive1(),draggedX-premierX,draggedY-premierY);
-            }
-
-            @Override
-            public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
-                Controlleur.getControlleur().zoomer(instanceVueActive1.getPerspectiveVueActive1(), mouseWheelEvent.getWheelRotation());
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
-                instanceVueActive1.setCursor(cursor);
-            }
-        };
-        instanceVueActive1.addMouseMotionListener(myMouseAdapter);
-
-        instanceVueActive1.addMouseWheelListener(myMouseAdapter);
-
-        instanceVueActive1.addMouseListener(myMouseAdapter);
-
-
         tabbedPane.addTab("Vue Active 1", null, instanceVueActive1, "Vue Active 1");
         //****** Fin vue active 1 ***********
 
        //******* Debut vue active 2 **********
 
-        vueActive2 = new VueActive2();
+        vueActive2 = new VueActive1(imageInitiale.getTheImage());
 
-        vueActive2.setVueActive2(imageInitiale.getTheImage());
+        vueActive2.setVueActive1(imageInitiale.getTheImage());
 
         vueActive2.setPreferredSize(dimensionImage);
 
