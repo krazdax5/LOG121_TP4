@@ -116,7 +116,7 @@ public class MenuBar extends JMenuBar {
         copier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().ctrlC(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1());
+                Controlleur.getControlleur().ctrlC(null);
             }
         });
 
@@ -154,7 +154,7 @@ public class MenuBar extends JMenuBar {
         zoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1(),1);
+                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive.getPerspectiveVueActive1(),1);
             }
         });
 
@@ -169,10 +169,23 @@ public class MenuBar extends JMenuBar {
         deplacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1(0,0));
+                JTextField translationHorizontale = new JTextField();
+                JTextField translationVerticale = new JTextField();
+                Object[] message = {
+                        "Translation Horizontale:", translationHorizontale,
+                        "Translation Verticale:", translationVerticale
+                };
+
+                int translation = JOptionPane.showConfirmDialog(null, message, "Translation", JOptionPane.OK_CANCEL_OPTION);
+                if(translation == JOptionPane.OK_OPTION){
+                    Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().vueActive.getPerspectiveVueActive1(),
+                            Integer.parseInt(translationHorizontale.getText()), Integer.parseInt(translationVerticale.getText()));
+
+                }
+
+
             }
         });
-
         menuVue.add(deplacer);
         //**************Fin deplacer ******************
 
