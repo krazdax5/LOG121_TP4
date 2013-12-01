@@ -80,41 +80,31 @@ public class PanneauPrincipal extends JPanel implements Observer {
         instanceVueActive1 = new VueActive1(imageInitiale.getTheImage());
 
         instanceVueActive1.setPreferredSize(dimensionImage);
-        instanceVueActive1.addMouseMotionListener(new MouseMotionListener() {
+
+        MouseAdapter myMouseAdapter = new MouseAdapter() {
+
+            int premierX;
+            int premierY;
+
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+                premierX = mouseEvent.getX();
+                premierY = mouseEvent.getY();
+            }
+
             @Override
             public void mouseDragged(MouseEvent mouseEvent) {
-//                Controlleur.getControlleur().deplacer(instanceVueActive1.getPerspectiveVueActive1(),
-//                        mouseEvent.getX()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageX(),mouseEvent.getY()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageY());
+                int draggedX = mouseEvent.getX();
+                int draggedY = mouseEvent.getY();
+
+                Controlleur.getControlleur().deplacer(instanceVueActive1.getPerspectiveVueActive1(),draggedX-premierX,draggedY-premierY);
             }
 
-            @Override
-            public void mouseMoved(MouseEvent mouseEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });
-
-        instanceVueActive1.addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
                 Controlleur.getControlleur().zoomer(instanceVueActive1.getPerspectiveVueActive1(), mouseWheelEvent.getWheelRotation());
 
-            }
-        });
-
-        instanceVueActive1.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent mouseEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent mouseEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
             }
 
             @Override
@@ -122,12 +112,12 @@ public class PanneauPrincipal extends JPanel implements Observer {
                 Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
                 instanceVueActive1.setCursor(cursor);
             }
+        };
+        instanceVueActive1.addMouseMotionListener(myMouseAdapter);
 
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });
+        instanceVueActive1.addMouseWheelListener(myMouseAdapter);
+
+        instanceVueActive1.addMouseListener(myMouseAdapter);
 
 
         tabbedPane.addTab("Vue Active 1", null, instanceVueActive1, "Vue Active 1");

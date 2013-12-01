@@ -65,9 +65,11 @@ public class Perspective extends Observable {
      * @param nouvelleEchelle
      */
     public void setEchelle(int nouvelleEchelle){
+        if(nouvelleEchelle > 0) {
         echelle = nouvelleEchelle;
         setChanged();
         notifyObservers();
+        }
     }
 
     /**

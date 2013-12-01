@@ -16,9 +16,13 @@ public class Deplacer implements InterfaceCommande {
     private Perspective perspective;
     private int offsetX;
     private int offsetY;
+    private int offsetXInitial;
+    private int offsetYInitial;
 
     public Deplacer(Perspective perspective, int offsetX, int offsetY) {
         this.perspective = perspective;
+        this.offsetXInitial = perspective.getCornerImageX();
+        this.offsetYInitial = perspective.getCornerImageY();
         this.offsetX = offsetX;
         this.offsetY = offsetY;
     }
