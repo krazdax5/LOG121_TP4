@@ -1,6 +1,7 @@
 package ets.gui;
 
 import ets.Controlleur;
+import ets.Perspective;
 
 import javax.swing.*;
 import java.awt.*;
@@ -154,7 +155,7 @@ public class MenuBar extends JMenuBar {
         zoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive.getPerspectiveVueActive1(),1);
+                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1(),1);
             }
         });
 
@@ -178,8 +179,17 @@ public class MenuBar extends JMenuBar {
 
                 int translation = JOptionPane.showConfirmDialog(null, message, "Translation", JOptionPane.OK_CANCEL_OPTION);
                 if(translation == JOptionPane.OK_OPTION){
-                    Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().vueActive.getPerspectiveVueActive1(),
-                            Integer.parseInt(translationHorizontale.getText()), Integer.parseInt(translationVerticale.getText()));
+                    try {
+                        int nouveauOffsetX = Integer.parseInt(translationHorizontale.getText());
+                        int nouveauOffsetY = Integer.parseInt(translationVerticale.getText());
+                        int ancienOffsetX = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().getCornerImageX();
+                        int ancienOffsetY = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1().getCornerImageY();
+                    Controlleur.getControlleur().deplacer(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1(),
+                            ancienOffsetX + nouveauOffsetX, ancienOffsetY + nouveauOffsetY);
+                    } catch(NumberFormatException exception){
+                        JOptionPane.showMessageDialog(null,"Veuillez entrer un nombre S.V.P.");
+                        actionPerformed(e);
+                    }
 
                 }
 
@@ -188,6 +198,18 @@ public class MenuBar extends JMenuBar {
         });
         menuVue.add(deplacer);
         //**************Fin deplacer ******************
+
+        JMenuItem etatInitial = new JMenuItem();
+        etatInitial.setText("Etat initial");
+        etatInitial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                PanneauPrincipal.getPanneauPrincipal().getVueChoisie().setPerspective(new Perspective());
+                PanneauPrincipal.getPanneauPrincipal().getVueChoisie().repaint();
+            }
+        });
+
+        menuVue.add(etatInitial);
 
         this.add(menuVue);
 
