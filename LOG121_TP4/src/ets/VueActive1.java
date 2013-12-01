@@ -82,11 +82,10 @@ public class VueActive1 extends JPanel implements Observer {
      * @param g
      */
     public void paintComponent(Graphics g){
-            g.drawImage(imageVueActive1,perspective.getCornerImageX(),perspective.getCornerImageY(),
-                    imageVueActive1.getWidth(null)*perspective.getEchelle(),
-                    imageVueActive1.getHeight(null)*perspective.getEchelle(),0,0,imageVueActive1.getWidth(null),
+            g.drawImage(imageVueActive1,perspective.getCornerImageX(), perspective.getCornerImageY(),
+                    imageVueActive1.getWidth(null)*perspective.getEchelle()+perspective.getCornerImageX(),
+                    imageVueActive1.getHeight(null)*perspective.getEchelle()+perspective.getCornerImageY(),0,0,imageVueActive1.getWidth(null),
                     imageVueActive1.getHeight(null), null);
     }
-
 
 }

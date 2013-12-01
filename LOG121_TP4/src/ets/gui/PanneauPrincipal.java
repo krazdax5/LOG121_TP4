@@ -43,7 +43,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
         String workingDir = System.getProperty("user.dir");
 
-        ImageConcrete imageInitiale = ImageConcrete.createImage(workingDir+"/src/ets/res/img/image1.jpg");
+        ImageConcrete imageInitiale = ImageConcrete.createImage("C:\\Users\\Jacob\\Documents\\log_121_TP4-REALSHIT\\LOG121_TP4\\src\\ets\\res\\img\\megan_fox.png");
 
         int hauteur = imageInitiale.getTheImage().getHeight(null);
         int largeur = imageInitiale.getTheImage().getWidth(null);
@@ -75,10 +75,8 @@ public class PanneauPrincipal extends JPanel implements Observer {
         instanceVueActive1.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent mouseEvent) {
-
                 Controlleur.getControlleur().deplacer(instanceVueActive1.getPerspectiveVueActive1(),
-                        (int)mouseEvent.getPoint().getX(),(int)mouseEvent.getPoint().getY());
-
+                        mouseEvent.getX()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageX(),mouseEvent.getY()-instanceVueActive1.getPerspectiveVueActive1().getCornerImageY());
             }
 
             @Override
@@ -91,6 +89,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
             @Override
             public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
                 Controlleur.getControlleur().zoomer(instanceVueActive1.getPerspectiveVueActive1(), mouseWheelEvent.getWheelRotation());
+
             }
         });
 
@@ -102,7 +101,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
+
             }
 
             @Override
