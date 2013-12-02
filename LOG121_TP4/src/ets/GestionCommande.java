@@ -17,28 +17,35 @@ import java.util.Stack;
  */
 public class GestionCommande {
 
+
+    /**
+     * Objet qui permet la creation de commandes.
+     */
     private Factory factory;
 
     /**
-     * Pile qui garde en memoire les commandes effectuees par l'utilisateur
+     * Pile qui garde en memoire les commandes effectuees par l'utilisateur sur la vue active 1
      */
     private Stack<InterfaceCommande> pileCommandes1;
 
     /**
-     * Pile qui garde en memoire les commandes effectuees par l'utilisateur
+     * Pile qui garde en memoire les commandes effectuees par l'utilisateur sur la vue active 2
      */
     private Stack<InterfaceCommande> pileCommandes2;
 
     /**
-     * Pile qui garde en memoire les commandes defaites par l'utilsateur
+     * Pile qui garde en memoire les commandes defaites par l'utilsateur sur la vue active 1
      */
     private Stack<InterfaceCommande> pileCommandesDefaites1;
 
     /**
-     * Pile qui garde en memoire les commandes defaites par l'utilsateur
+     * Pile qui garde en memoire les commandes defaites par l'utilsateur sur la vue active 2
      */
     private Stack<InterfaceCommande> pileCommandesDefaites2;
 
+    /**
+     * Pile qui garde en memoire la commande copiee.
+     */
     private Stack<Copie> pileCopie;
 
 

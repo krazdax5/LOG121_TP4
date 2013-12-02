@@ -20,7 +20,7 @@ public class Controlleur {
     private static Controlleur instance;
 
     private PanneauPrincipal panneauPrincipal;
-    GestionCommande gestionnaire;
+    private GestionCommande gestionnaire;
 
     ImageConcrete image;
 
