@@ -17,7 +17,7 @@ import java.io.File;
 public class Controlleur {
 
 
-    private static Controlleur controlleur;
+    private static Controlleur instance;
 
     private PanneauPrincipal panneauPrincipal;
     GestionCommande gestionnaire;
@@ -28,9 +28,9 @@ public class Controlleur {
 
         FenetrePrincipale applicationImages = FenetrePrincipale.getFenetrePrincipale();
 
-        Thread t = new Thread(applicationImages);
+        Thread threadApplication = new Thread(applicationImages);
 
-        t.start();
+        threadApplication.start();
     }
 
     private Controlleur() {
@@ -48,18 +48,18 @@ public class Controlleur {
     }
 
     public static Controlleur getControlleur() {
-        if(controlleur == null)
-            controlleur = new Controlleur();
+        if(instance == null)
+            instance = new Controlleur();
 
-        return controlleur;
+        return instance;
     }
 
     public void changerImage(File sourceImage) {
         this.image.setImage(sourceImage);
     }
 
-    public void changerPerspective(String nouvellePerspective) {
-        Perspective perspective = UtilitaireFichier.recuperePerspective(nouvellePerspective);
+    public void changerPerspective(String newPerspective) {
+        Perspective perspective = UtilitaireFichier.recuperePerspective(newPerspective);
         int echelle = perspective.getEchelle();
         int offsetX = perspective.getCornerImageX();
         int offsetY = perspective.getCornerImageY();
@@ -86,10 +86,10 @@ public class Controlleur {
     }
 
     public void defaire() {
-        gestionnaire.defaire();
+        gestionnaire.defaireCommande();
     }
 
     public void refaire() {
-        gestionnaire.refaire();
+        gestionnaire.refaireCommande();
     }
 }

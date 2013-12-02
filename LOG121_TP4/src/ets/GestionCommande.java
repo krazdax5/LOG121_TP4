@@ -1,8 +1,8 @@
 package ets;
 
 import ets.commande.*;
+import ets.gui.PanneauPrincipal;
 
-import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Stack;
  * @author Mathieu Lachance LACM14059305
  * 2013-11-21 : Debut de l'implementation
  *              Ajout de la methode factory et des methodes ajouterCommande() et defaireCommande()
- * 2013-11-21 : Ajout de la méthode zoomer(), deplacer(), refaire() et defaire()
+ * 2013-11-21 : Ajout de la méthode zoomer(), deplacer(), refaireCommande() et defaireCommande()
  */
 public class GestionCommande {
 
@@ -22,13 +22,22 @@ public class GestionCommande {
     /**
      * Pile qui garde en memoire les commandes effectuees par l'utilisateur
      */
-    private Stack<InterfaceCommande> pileCommandes;
+    private Stack<InterfaceCommande> pileCommandes1;
+
+    /**
+     * Pile qui garde en memoire les commandes effectuees par l'utilisateur
+     */
+    private Stack<InterfaceCommande> pileCommandes2;
 
     /**
      * Pile qui garde en memoire les commandes defaites par l'utilsateur
      */
-    private Stack<InterfaceCommande> pileCommandesDefaites;
+    private Stack<InterfaceCommande> pileCommandesDefaites1;
 
+    /**
+     * Pile qui garde en memoire les commandes defaites par l'utilsateur
+     */
+    private Stack<InterfaceCommande> pileCommandesDefaites2;
 
     private Stack<Copie> pileCopie;
 
@@ -38,8 +47,10 @@ public class GestionCommande {
      */
     public GestionCommande() {
         factory = new Factory();
-        pileCommandes = new Stack<InterfaceCommande>();
-        pileCommandesDefaites = new Stack<InterfaceCommande>();
+        pileCommandes1 = new Stack<InterfaceCommande>();
+        pileCommandes2 = new Stack<InterfaceCommande>();
+        pileCommandesDefaites1 = new Stack<InterfaceCommande>();
+        pileCommandesDefaites2 = new Stack<InterfaceCommande>();
         pileCopie = new Stack<Copie>();
     }
 
@@ -47,20 +58,59 @@ public class GestionCommande {
      * Methode qui permet d'ajouter une commande a la pile de commandes
      * @param commande La commande a ajouter
      */
-    private InterfaceCommande ajouterCommande(InterfaceCommande commande) {
-        return pileCommandes.push(commande);
+    private void ajouterCommande(InterfaceCommande commande) {
+        if(PanneauPrincipal.getPanneauPrincipal().getVueChoisie() == PanneauPrincipal.getPanneauPrincipal().getVueActive1())
+            pileCommandes1.push(commande);
+        else
+            pileCommandes2.push(commande);
+    }
+    private void ajouterCommandeDefaite(InterfaceCommande commande) {
+        if(PanneauPrincipal.getPanneauPrincipal().getVueChoisie() == PanneauPrincipal.getPanneauPrincipal().getVueActive1())
+            pileCommandesDefaites1.push(commande);
+        else
+            pileCommandesDefaites2.push(commande);
     }
 
     /**
      * Methode qui permet de retirer une commande de la pile de commandes
      * et de l'ajouter a la pile de commandes defaites.
      */
-    private InterfaceCommande defaireCommande() {
-        return pileCommandes.pop();
+    public void defaireCommande() {
+        if(PanneauPrincipal.getPanneauPrincipal().getVueChoisie() == PanneauPrincipal.getPanneauPrincipal().getVueActive1() && !pileCommandes1.isEmpty()) {
+            InterfaceCommande commandeADefaire = pileCommandes1.pop();
+            commandeADefaire.executer();
+            this.ajouterCommandeDefaite(commandeADefaire);
+        } else {
+            if(!pileCommandes2.isEmpty()){
+                InterfaceCommande commandeADefaire = pileCommandes2.pop();
+                commandeADefaire.executer();
+                this.ajouterCommandeDefaite(commandeADefaire);
+            }
+        }
     }
 
-    private InterfaceCommande refaireCommande() {
-        return pileCommandesDefaites.pop();
+    public void refaireCommande() {
+        if(PanneauPrincipal.getPanneauPrincipal().getVueChoisie() == PanneauPrincipal.getPanneauPrincipal().getVueActive1() && !pileCommandesDefaites1.isEmpty()) {
+            InterfaceCommande commandeARefaire = pileCommandesDefaites1.pop();
+            commandeARefaire.executer();
+            this.ajouterCommande(commandeARefaire);
+        } else {
+            if(!pileCommandesDefaites2.isEmpty()) {
+                InterfaceCommande commandeARefaire = pileCommandesDefaites2.pop();
+                commandeARefaire.executer();
+                this.ajouterCommande(commandeARefaire);
+            }
+        }
+    }
+
+    private void viderCommandeDefaites() {
+        if(PanneauPrincipal.getPanneauPrincipal().getVueChoisie() == PanneauPrincipal.getPanneauPrincipal().getVueActive1()) {
+            while(!pileCommandesDefaites1.empty())
+                pileCommandesDefaites1.pop();
+        } else {
+            while(!pileCommandesDefaites2.empty())
+                pileCommandesDefaites2.pop();
+        }
     }
 
     /**
@@ -84,7 +134,7 @@ public class GestionCommande {
         if(!pileCopie.isEmpty()) {
             Copie ctrlV = pileCopie.peek();
             ctrlV.executer();
-            pileCommandes.push(pileCopie.peek());
+            pileCommandes1.push(pileCopie.peek());
         }
     }
 
@@ -92,25 +142,12 @@ public class GestionCommande {
         Zoom zoom = factory.createZoom(perspective, echelle);
         zoom.executer();
         this.ajouterCommande(zoom);
-
+        this.viderCommandeDefaites();
     }
     public void deplacer(Perspective perspective, int offsetX, int offsetY) {
         Deplacer deplace = factory.createDeplacer(perspective, offsetX, offsetY);
         deplace.executer();
         this.ajouterCommande(deplace);
-    }
-    public void refaire() {
-        if(!pileCommandesDefaites.isEmpty()){
-            InterfaceCommande commandeRefaite = this.refaireCommande();
-            commandeRefaite.executer();
-            pileCommandes.push(commandeRefaite);
-        }
-    }
-    public void defaire() {
-        if(!pileCommandes.isEmpty()){
-            InterfaceCommande commandeDefaite = this.defaireCommande();
-            commandeDefaite.defaire();
-            pileCommandesDefaites.push(commandeDefaite);
-        }
+        this.viderCommandeDefaites();
     }
 }

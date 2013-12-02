@@ -202,10 +202,6 @@ public class MenuBar extends JMenuBar {
         JMenuItem zoom = new JMenuItem();
         zoom.setText("Zoom...");
 
-        zoom.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_SHIFT, Toolkit.getDefaultToolkit().
-                getMenuShortcutKeyMask()));
-
         zoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

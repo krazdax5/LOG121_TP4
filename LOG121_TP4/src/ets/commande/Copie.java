@@ -14,13 +14,14 @@ import ets.gui.PanneauPrincipal;
  */
 public class Copie implements InterfaceCommande {
 
-    private Perspective perspective;
+    VueActive vueActive;
+    private Perspective perspectiveInitiale;
     private int echelle;
     private int offsetX;
     private int offsetY;
 
     public Copie(Perspective perspective) {
-        this.perspective = perspective;
+        this.perspectiveInitiale = perspective;
         this.echelle = perspective.getEchelle();
         this.offsetX = perspective.getCornerImageX();
         this.offsetY = perspective.getCornerImageY();
@@ -28,7 +29,7 @@ public class Copie implements InterfaceCommande {
 
     @Override
     public void executer() {
-        VueActive vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
+        this.vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
         vueActive.getPerspectiveVueActive1().setEchelle(echelle);
         vueActive.getPerspectiveVueActive1().setCornerPerspective(offsetX, offsetY);
         vueActive.repaint();
@@ -36,7 +37,10 @@ public class Copie implements InterfaceCommande {
 
     @Override
     public void defaire() {
-        //To change body of implemented methods use File | Settings | File Templates.
+        vueActive.getPerspectiveVueActive1().setEchelle(perspectiveInitiale.getEchelle());
+        vueActive.getPerspectiveVueActive1().setCornerPerspective(perspectiveInitiale.getCornerImageX(),
+                perspectiveInitiale.getCornerImageY());
+        vueActive.repaint();
     }
 
 }

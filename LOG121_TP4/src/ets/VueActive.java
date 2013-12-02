@@ -1,21 +1,17 @@
 package ets;
 
-
-import ets.gui.PanneauPrincipal;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
-import java.awt.geom.AffineTransform;
-import java.awt.image.RescaleOp;
 import java.util.Observable;
 import java.util.Observer;
 
 
 /**
+ *
+ *
  *          Historique des modifications
  ***************************************************
  * @author Jacob Marcil
@@ -121,11 +117,14 @@ public class VueActive extends JPanel implements Observer {
      * Permet de dessiner plein écran la vue active selon la perspective
      * @param g
      */
-    public void paintComponent(Graphics g){
-            g.drawImage(imageVueActive1,perspective.getCornerImageX(), perspective.getCornerImageY(),
-                    imageVueActive1.getWidth(null)*perspective.getEchelle()+perspective.getCornerImageX(),
-                    imageVueActive1.getHeight(null)*perspective.getEchelle()+perspective.getCornerImageY(),0,0,imageVueActive1.getWidth(null),
-                    imageVueActive1.getHeight(null), null);
+    public void paint(Graphics g){
+        super.paint(g);
+        g.drawImage(imageVueActive1,perspective.getCornerImageX(), perspective.getCornerImageY(),
+                imageVueActive1.getWidth(null)*perspective.getEchelle()+perspective.getCornerImageX(),
+                imageVueActive1.getHeight(null)*perspective.getEchelle()+perspective.getCornerImageY(),0,0,imageVueActive1.getWidth(null),
+                imageVueActive1.getHeight(null), null);
+        g.drawImage(VueReduite.getVueReduite().getImageReduite(),this.getWidth()-90,15,75,75,null);
+        g.drawRect(this.getWidth()-90,15,75,75);
     }
 
 }

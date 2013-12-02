@@ -55,6 +55,10 @@ public class VueReduite  extends JPanel implements Observer {
         this.hauteur = image.getHeight(null);
     }
 
+    public Image getImageReduite() {
+        return imageReduite;
+    }
+
     @Override
     public void paintComponent(Graphics g) {
 
