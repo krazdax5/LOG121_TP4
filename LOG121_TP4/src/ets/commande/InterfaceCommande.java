@@ -12,5 +12,4 @@ public interface InterfaceCommande {
 
     public void executer();
     public void defaire();
-
 }

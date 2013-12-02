@@ -1,9 +1,5 @@
 package ets;
 
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Observable;
 
@@ -17,10 +13,17 @@ import java.util.Observable;
  */
 public class Perspective extends Observable implements Serializable{
 
-
-    private Point2D offset;
+    /**
+     * Deplacement en X de la perspective de la vue active par rapport à la perspective initiale de celle-ci.
+     */
     private int offsetX;
+    /**
+     * Deplacement en Y de la perspective de la vue active par rapport à la perspective initiale de celle-ci.
+     */
     private int offsetY;
+    /**
+     * Echelle de la perspective de la vue active
+     */
     private int echelle;
 
     /**
@@ -81,6 +84,10 @@ public class Perspective extends Observable implements Serializable{
         return echelle;
     }
 
+    /**
+     * Méthode toString qui affiche "perspective" lors de l'appel
+     * @return
+     */
     public String toString() {
         return "perspective";
     }

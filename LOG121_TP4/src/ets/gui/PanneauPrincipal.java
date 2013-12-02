@@ -2,8 +2,6 @@ package ets.gui;
 
 import ets.*;
 
-import javax.activation.MimetypesFileTypeMap;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -28,7 +26,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
     protected VueActive vueActive1;
     protected VueActive vueActive2;
-    protected VueReduite vueReduite;
+    protected VueOriginale vueReduite;
 
     public static PanneauPrincipal getPanneauPrincipal() {
         if(instance == null)
@@ -67,9 +65,9 @@ public class PanneauPrincipal extends JPanel implements Observer {
         this.setMaximumSize(dimensionImage);
         this.setMinimumSize(dimensionImage);
 
-        vueReduite = VueReduite.getVueReduite();
+        vueReduite = VueOriginale.getVueOriginale();
 
-        vueReduite.setImageReduite(imageInitiale.getTheImage());
+        vueReduite.setImageOriginale(imageInitiale);
 
         vueReduite.setPreferredSize(dimensionImage);
 
@@ -79,14 +77,14 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
 
         //******* Debut vue active 1 **********
-        vueActive1 = new VueActive(imageInitiale.getTheImage());
+        vueActive1 = new VueActive(imageInitiale);
 
         tabbedPane.addTab("Vue Active 1", null, vueActive1, "Vue Active 1");
         //****** Fin vue active 1 ***********
 
        //******* Debut vue active 2 **********
 
-        vueActive2 = new VueActive(imageInitiale.getTheImage());
+        vueActive2 = new VueActive(imageInitiale);
 
         tabbedPane.addTab("Vue Active 2", null, vueActive2, "Vue Active 2");
         // ******** Fin vue active 2 *******

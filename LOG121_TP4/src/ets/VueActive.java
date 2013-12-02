@@ -19,15 +19,30 @@ import java.util.Observer;
  */
 public class VueActive extends JPanel implements Observer {
 
+    /**
+     * Boolean permettant de connaître quel vue est active.
+     * Si le boolean est à "true" la vue est active
+     */
     private boolean estActive;
-    private Image imageVueActive1;
+    /**
+     * Image de la vue active
+     */
+    private ImageConcrete imageVueActive;
+    /**
+     * Perspective de la vue active
+     */
     private Perspective perspective;
 
+    /**
+     * Met à jour la vue active lorsque l'objet obsevable remarque un changement dans l'état de la vue active
+     * @param observable
+     * @param o
+     */
     @Override
     public void update(Observable observable, Object o) {
         if(observable.toString().equals("image")) {
             ImageConcrete image = (ImageConcrete) observable;
-            this.setVueActive1(image.getTheImage());
+            this.setImage(image);
             this.repaint();
         }
         if(observable.toString().equals("perspective")) {
@@ -37,16 +52,16 @@ public class VueActive extends JPanel implements Observer {
     }
 
     /**
-     * Constructeur
+     * Constructeur de la classe VueActive
      * @param image
      */
-    public VueActive(Image image){
-        this.imageVueActive1 = image;
+    public VueActive(ImageConcrete image){
+        this.imageVueActive = image;
         this.perspective = new Perspective();
         this.perspective.addObserver(this);
 
-        int hauteur = imageVueActive1.getHeight(null);
-        int largeur = imageVueActive1.getWidth(null);
+        int hauteur = imageVueActive.getTheImage().getHeight(null);
+        int largeur = imageVueActive.getTheImage().getWidth(null);
         Dimension dimensionImage = new Dimension(largeur, hauteur);
 
         this.setPreferredSize(dimensionImage);
@@ -57,6 +72,10 @@ public class VueActive extends JPanel implements Observer {
             int premierY;
 
 
+            /**
+             * Permet de mettre en mémoire la position lorsque la souris pèse sur la perspective
+             * @param mouseEvent
+             */
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
                 premierX = perspective.getCornerImageX() - mouseEvent.getX();
@@ -65,11 +84,19 @@ public class VueActive extends JPanel implements Observer {
                 setPosition(mouseEvent);
             }
 
+            /**
+             * Change la position de la perspective lorsque la souris dragged l'image
+             * @param mouseEvent
+             */
             @Override
             public void mouseDragged(MouseEvent mouseEvent) {
                 setPosition(mouseEvent);
             }
 
+            /**
+             * Change l'échelle de la perspective lors du WheelMoved de la souris
+             * @param mouseWheelEvent
+             */
             @Override
             public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
                 Controlleur.getControlleur().zoomer(perspective, mouseWheelEvent.getWheelRotation());
@@ -82,6 +109,10 @@ public class VueActive extends JPanel implements Observer {
                 setCursor(cursor);
             }
 
+            /**
+             * Setter permettant de placer la position de la perspective
+             * @param mouseEvent
+             */
             public void setPosition(MouseEvent mouseEvent) {
                 Controlleur.getControlleur().deplacer(perspective,premierX+mouseEvent.getX(),premierY+mouseEvent.getY());
                 repaint();
@@ -93,37 +124,49 @@ public class VueActive extends JPanel implements Observer {
         this.addMouseWheelListener(myMouseAdapter);
     }
 
-    public Perspective getPerspectiveVueActive1(){
+    /**
+     * Getter de la Perspective de la vue active
+     * @return
+     */
+    public Perspective getPerspectiveVueActive(){
         return perspective;
     }
     /**
-     * Setter de la vueActive1
+     * Setter de la vueActive
      * @param image
      */
-    public void setVueActive1(Image image){
-        this.imageVueActive1 = image;
+    public void setImage(ImageConcrete image){
+        this.imageVueActive = image;
         this.perspective = new Perspective();
     }
 
+    /**
+     * Setter permettant de définir qu'elle vue est active
+     * @param estActive
+     */
     public void setActive(boolean estActive) {
         this.estActive = estActive;
     }
 
+    /**
+     * Rend la vue ayant appeller cette fonction active
+     * @return
+     */
     public boolean estActive() {
         return estActive;
     }
 
     /**
-     * Permet de dessiner plein écran la vue active selon la perspective
+     * Permet de dessiner la vue active par rapport à la perspective de celle-ci
      * @param g
      */
     public void paint(Graphics g){
         super.paint(g);
-        g.drawImage(imageVueActive1,perspective.getCornerImageX(), perspective.getCornerImageY(),
-                imageVueActive1.getWidth(null)*perspective.getEchelle()+perspective.getCornerImageX(),
-                imageVueActive1.getHeight(null)*perspective.getEchelle()+perspective.getCornerImageY(),0,0,imageVueActive1.getWidth(null),
-                imageVueActive1.getHeight(null), null);
-        g.drawImage(VueReduite.getVueReduite().getImageReduite(),this.getWidth()-90,15,75,75,null);
+        g.drawImage(imageVueActive.getTheImage(),perspective.getCornerImageX(), perspective.getCornerImageY(),
+                imageVueActive.getTheImage().getWidth(null)*perspective.getEchelle()+perspective.getCornerImageX(),
+                imageVueActive.getTheImage().getHeight(null)*perspective.getEchelle()+perspective.getCornerImageY(),0,0, imageVueActive.getTheImage().getWidth(null),
+                imageVueActive.getTheImage().getHeight(null), null);
+        g.drawImage(VueOriginale.getVueOriginale().getImageOriginale().getTheImage(), this.getWidth() - 90, 15, 75, 75, null);
         g.drawRect(this.getWidth()-90,15,75,75);
     }
 
