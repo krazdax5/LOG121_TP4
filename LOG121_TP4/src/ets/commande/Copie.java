@@ -14,7 +14,7 @@ import ets.gui.PanneauPrincipal;
  */
 public class Copie implements InterfaceCommande {
 
-    VueActive vueActive;
+    private VueActive vueActive;
     private Perspective perspectiveInitiale;
     private int echelle;
     private int offsetX;

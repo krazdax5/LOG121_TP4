@@ -1,12 +1,8 @@
 package ets;
 
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.io.File;
 import java.util.Observable;
-import java.util.Observer;
-import javax.activation.MimetypesFileTypeMap;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -20,7 +16,7 @@ import javax.swing.*;
  * @author Mathieu Lachance LACM14059305
  * 2013-11-25 Ajout de la methode setImage() et rendre Observable
  */
-public class ImageConcrete extends Observable implements IImage {
+public class ImageConcrete extends Observable {
 
     private Image theImage = null;
 

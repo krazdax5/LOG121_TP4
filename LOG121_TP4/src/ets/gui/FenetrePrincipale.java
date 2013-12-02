@@ -31,10 +31,6 @@ public class FenetrePrincipale implements Runnable, Observer {
 
     PanneauPrincipal panneauPrincipal;
 
-//    ImageConcrete imageConcrete;
-
-//    Controlleur controlleur = Controlleur.getControlleur();
-
     private FenetrePrincipale() {}
 
     public static FenetrePrincipale getFenetrePrincipale() {

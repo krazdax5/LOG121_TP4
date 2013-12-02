@@ -39,6 +39,7 @@ public class MenuBar extends JMenuBar {
         ouvrirImage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+
                 boolean isAnImage = false;
 
                 int valeurRetour;
