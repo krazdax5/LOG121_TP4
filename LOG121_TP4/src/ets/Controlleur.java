@@ -37,7 +37,7 @@ public class Controlleur {
         panneauPrincipal = PanneauPrincipal.getPanneauPrincipal();
 
         image = ImageConcrete.createImage(null);
-        image.addObserver(VueReduite.getVueReduite());
+        image.addObserver(VueOriginale.getVueOriginale());
 
         image.addObserver(panneauPrincipal.getVueActive1());
         image.addObserver(panneauPrincipal.getVueActive2());
@@ -64,8 +64,8 @@ public class Controlleur {
         int offsetX = perspective.getCornerImageX();
         int offsetY = perspective.getCornerImageY();
         VueActive vueActive = panneauPrincipal.getVueChoisie();
-        vueActive.getPerspectiveVueActive1().setEchelle(echelle);
-        vueActive.getPerspectiveVueActive1().setCornerPerspective(offsetX,offsetY);
+        vueActive.getPerspectiveVueActive().setEchelle(echelle);
+        vueActive.getPerspectiveVueActive().setCornerPerspective(offsetX,offsetY);
         panneauPrincipal.repaint();
     }
 

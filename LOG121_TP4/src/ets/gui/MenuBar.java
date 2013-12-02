@@ -1,12 +1,10 @@
 package ets.gui;
 
 import ets.Controlleur;
-import ets.Perspective;
 import ets.UtilitaireFichier;
 import ets.VueActive;
 
 import javax.activation.MimetypesFileTypeMap;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -111,12 +109,12 @@ public class MenuBar extends JMenuBar {
 
                     if(os.equals("mac os x")){
                         adresse = fcSave.getCurrentDirectory() + "/" + fcSave.getSelectedFile().getName();
-                        UtilitaireFichier.sauvegarderPerspective(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1(),adresse);
+                        UtilitaireFichier.sauvegarderPerspective(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive(),adresse);
 
                     }else{
                         String fichier = fcSave.getSelectedFile().getAbsolutePath();
                         adresse = fichier.replace("\\", "\\\\");
-                        UtilitaireFichier.sauvegarderPerspective(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1(),adresse);
+                        UtilitaireFichier.sauvegarderPerspective(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive(),adresse);
                     }
 
                 } else {
@@ -170,7 +168,7 @@ public class MenuBar extends JMenuBar {
         copier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().ctrlC(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive1());
+                Controlleur.getControlleur().ctrlC(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive());
             }
         });
 
@@ -206,7 +204,7 @@ public class MenuBar extends JMenuBar {
         zoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive1(),1);
+                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive(),1);
             }
         });
 
@@ -234,9 +232,9 @@ public class MenuBar extends JMenuBar {
                         int nouveauOffsetX = Integer.parseInt(translationHorizontale.getText());
                         int nouveauOffsetY = Integer.parseInt(translationVerticale.getText());
                         VueActive vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
-                        int ancienOffsetX = vueActive.getPerspectiveVueActive1().getCornerImageX();
-                        int ancienOffsetY = vueActive.getPerspectiveVueActive1().getCornerImageY();
-                        Controlleur.getControlleur().deplacer(vueActive.getPerspectiveVueActive1(),
+                        int ancienOffsetX = vueActive.getPerspectiveVueActive().getCornerImageX();
+                        int ancienOffsetY = vueActive.getPerspectiveVueActive().getCornerImageY();
+                        Controlleur.getControlleur().deplacer(vueActive.getPerspectiveVueActive(),
                                 ancienOffsetX + nouveauOffsetX, ancienOffsetY + nouveauOffsetY);
                     } catch(NumberFormatException exception){
                         JOptionPane.showMessageDialog(null,"Veuillez entrer un nombre S.V.P.");
@@ -257,8 +255,8 @@ public class MenuBar extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 VueActive vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
-                vueActive.getPerspectiveVueActive1().setEchelle(1);
-                vueActive.getPerspectiveVueActive1().setCornerPerspective(0,0);
+                vueActive.getPerspectiveVueActive().setEchelle(1);
+                vueActive.getPerspectiveVueActive().setCornerPerspective(0,0);
                 vueActive.repaint();
             }
         });
