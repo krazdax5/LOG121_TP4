@@ -80,7 +80,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
             imageInitiale = ImageConcrete.createImage(image);
         } else {
             repertoireActuel.replace("\\", "\\\\");
-            File image = new File(repertoireActuel+"\\LOG121_TP4\\src\\ets\\res\\img\\megan_fox.jpg");
+            File image = new File(repertoireActuel+"\\src\\ets\\res\\img\\megan_fox.jpg");
             imageInitiale = ImageConcrete.createImage(image);
         }
 
