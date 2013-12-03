@@ -8,14 +8,14 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Patron : Immutable
+ * Classe qui permet d'afficher la vue originale de l'image.
  *
  *          Historique des modifications
  ***************************************************
- * @author Charles Levesque
+ * @author Pierre-Luc Landry
  * 2013-11-
  * @author Mathieu Lachance LACM14059305
- * 2013-11-25 : Ajout des methodes setImageOriginale et paintComponent()
+ * 2013-11-25 : Ajout des methodes setImageOriginale et paint()
  *              Rendre la classe Observer
  */
 public class VueOriginale extends JPanel implements Observer {
@@ -57,8 +57,8 @@ public class VueOriginale extends JPanel implements Observer {
     }
 
     /**
-     * Getter de la gui originale
-     * @return
+     * Getter de la vue originale
+     * @return L'instance simple de la vue originale.
      */
     public static VueOriginale getVueOriginale() {
         if(instance == null) {
@@ -70,7 +70,7 @@ public class VueOriginale extends JPanel implements Observer {
 
     /**
      * Setter de l'image originale
-     * @param image
+     * @param image la nouvelle image.
      */
     public void setImageOriginale(ImageConcrete image) {
         this.imageOriginale = image;
@@ -80,7 +80,7 @@ public class VueOriginale extends JPanel implements Observer {
 
     /**
      * Getter de l'image originale
-     * @return
+     * @return L'image concrete contenant l'image.
      */
     public ImageConcrete getImageOriginale() {
         return imageOriginale;
@@ -88,7 +88,7 @@ public class VueOriginale extends JPanel implements Observer {
 
     /**
      * Permet de dessinner l'image original
-     * @param g
+     * @param g l'objet graphics permettant de dessiner l'image.
      */
     @Override
     public void paint(Graphics g) {
@@ -98,8 +98,9 @@ public class VueOriginale extends JPanel implements Observer {
     }
 
     /**
-     * Permet d'afficher les changements s'il y en a qui surviennent sur la gui original
-     * @param observable
+     * Methode qui permet a la vue originale de se mettre a jour lorsque la classe
+     * qu'il observe change.
+     * @param observable L'objet observe par la vue originale.
      * @param o
      */
     @Override

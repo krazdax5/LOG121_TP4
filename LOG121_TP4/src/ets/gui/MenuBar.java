@@ -22,10 +22,26 @@ import java.io.File;
  */
 public class MenuBar extends JMenuBar {
 
+    /**
+     * Constructeur du MenuBar de l'application
+     * Cree tous les sous-menu et leur menuItem.
+     * Fichier : Ouvrir image.
+     *           Ouvrir perspective.
+     *           Enregistrer perspective.
+     * Defaire : Defaire
+     *           Refaire
+     *           Copier
+     *           Coller
+     * Vue     : Zoom
+     *           Deplacer
+     *           Etat initial
+     */
     protected MenuBar() {
 
+        // DEBUT MENU FICHIER //
         JMenu menuFichier = new JMenu();
         menuFichier.setText("Fichier");
+
 
         JMenuItem ouvrirImage = new JMenuItem();
         ouvrirImage.setText("Ouvrir Image...");
@@ -53,6 +69,10 @@ public class MenuBar extends JMenuBar {
                         String imageChoisie = fileChooser.getSelectedFile().getAbsolutePath();
                         File nouvelleImage = new File(imageChoisie);
 
+                        // Lignes de code inspirées de StackOverflow.
+                        // Detecte le type de fichier lu et verifie si ce dernier est une image.
+                        // Source : http://stackoverflow.com/questions/9643228/test-if-file-is-an-image
+
                         String mimetype= new MimetypesFileTypeMap().getContentType(nouvelleImage);
                         String type = mimetype.split("/")[0];
                         if(type.equals("image")){
@@ -62,6 +82,8 @@ public class MenuBar extends JMenuBar {
                             JOptionPane.showMessageDialog(null, "Ceci n'est pas une image veuillez recommencer.");
                             isAnImage=false;
                         }
+
+                        // Fin des lignes inspirées
                     }
                 }while(valeurRetour != JFileChooser.CANCEL_OPTION && !isAnImage);
             }
@@ -104,9 +126,13 @@ public class MenuBar extends JMenuBar {
                 if(valeurRetour == JFileChooser.APPROVE_OPTION) {
 
                     String adresse;
-                    String os = System.getProperty("os.name").toLowerCase();
+                    String systemeExploitation = System.getProperty("os.name").toLowerCase();
 
-                    if(os.equals("mac os x")){
+                    // Les lignes de code suivante ont été inspirée de Mkyong.com
+                    // Detecte le systeme d'exploitation dans lequel nous sommes.
+                    // Source : http://www.mkyong.com/java/how-to-detect-os-in-java-systemgetpropertyosname/
+
+                    if(systemeExploitation.equals("mac os x")){
                         adresse = fcSave.getCurrentDirectory() + "/" + fcSave.getSelectedFile().getName();
                         UtilitaireFichier.sauvegarderPerspective(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive(),adresse);
 
@@ -116,8 +142,10 @@ public class MenuBar extends JMenuBar {
                         UtilitaireFichier.sauvegarderPerspective(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive(),adresse);
                     }
 
+                    // Fin des lignes inspirée
+
                 } else {
-                    JOptionPane.showMessageDialog(null,"L'emplacement entre est erronne ou il existe deja une fichier ...");
+                    JOptionPane.showMessageDialog(null,"L'emplacement entre est erronne ...");
                 }
             }
         });
@@ -125,6 +153,10 @@ public class MenuBar extends JMenuBar {
         menuFichier.add(enregistrer);
 
         this.add(menuFichier);
+
+        // FIN MENU FICHIER //
+
+        // DEBUT MENU EDITION //
 
         JMenu menuEdition = new JMenu();
         menuEdition.setText("Edition");
@@ -188,6 +220,10 @@ public class MenuBar extends JMenuBar {
         menuEdition.add(coller);
 
         this.add(menuEdition);
+
+        // FIN MENU EDITION //
+
+        // DEBUT MENU VUE //
 
         JMenu menuVue = new JMenu();
         menuVue.setText("Vue");
@@ -263,7 +299,7 @@ public class MenuBar extends JMenuBar {
 
         this.add(menuVue);
 
-
+        // FIN MENU VUE //
 
 
     }

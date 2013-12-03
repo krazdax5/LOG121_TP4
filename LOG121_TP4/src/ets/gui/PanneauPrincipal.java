@@ -12,7 +12,7 @@ import java.util.Observer;
 
 /**
  * Classe qui s'occupe de la gestion du panneau principal de l'application
- * Il est compose de plusieurs gui active et d'une gui reduite/originale.
+ * Il est compose de plusieurs vue active et d'une vue reduite/originale.
  *
  *          Historique des modifications
  ***************************************************
@@ -23,14 +23,33 @@ import java.util.Observer;
  */
 public class PanneauPrincipal extends JPanel implements Observer {
 
+    /**
+     * Attribut singleton qui consiste en l'instance simple du panneau principal.
+     */
     private static PanneauPrincipal instance;
 
-    JTabbedPane tabbedPane;
+    /**
+     * Le panneau qui permet la gestion du layout.
+     */
+    private JTabbedPane tabbedPane;
 
+    /**
+     * La vue active 1
+     */
     protected VueActive vueActive1;
+    /**
+     * La vue active 2
+     */
     protected VueActive vueActive2;
-    protected VueOriginale vueReduite;
+    /**
+     * La vue originale.
+     */
+    protected VueOriginale vueOriginale;
 
+    /**
+     * Methode singleton qui retourne l'instance du PanneauPrincipal.
+     * @return l'instance simple du panneau principal.
+     */
     public static PanneauPrincipal getPanneauPrincipal() {
         if(instance == null)
             instance = new PanneauPrincipal();
@@ -38,6 +57,9 @@ public class PanneauPrincipal extends JPanel implements Observer {
         return instance;
     }
 
+    /**
+     * Constructeur du Panneau Principal
+     */
     private PanneauPrincipal() {
 
 
@@ -45,18 +67,24 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
         ImageConcrete imageInitiale;
 
-        String os = System.getProperty("os.name").toLowerCase();
+        // Les lignes de code suivante ont été inspirées de Mkyong.com
+        // Detecte le systeme d'exploitation dans lequel nous sommes.
+        // Source : http://www.mkyong.com/java/how-to-detect-os-in-java-systemgetpropertyosname/
 
-        String workingDir = System.getProperty("user.dir");
+        String systemeExploitation = System.getProperty("os.name").toLowerCase();
 
-        if(os.equals("mac os x")){
-            File image = new File(workingDir+"/src/ets/res/img/megan_fox.jpg");
+        String repertoireActuel = System.getProperty("user.dir");
+
+        if(systemeExploitation.equals("mac os x")){
+            File image = new File(repertoireActuel+"/src/ets/res/img/megan_fox.jpg");
             imageInitiale = ImageConcrete.createImage(image);
-        }else {
-            workingDir.replace("\\", "\\\\");
-            File image = new File(workingDir+"\\LOG121_TP4\\src\\ets\\res\\img\\megan_fox.jpg");
+        } else {
+            repertoireActuel.replace("\\", "\\\\");
+            File image = new File(repertoireActuel+"\\LOG121_TP4\\src\\ets\\res\\img\\megan_fox.jpg");
             imageInitiale = ImageConcrete.createImage(image);
         }
+
+        // Fin des lignes inspirées
 
         int hauteur = imageInitiale.getTheImage().getHeight(null);
         int largeur = imageInitiale.getTheImage().getWidth(null);
@@ -68,29 +96,28 @@ public class PanneauPrincipal extends JPanel implements Observer {
         this.setMaximumSize(dimensionImage);
         this.setMinimumSize(dimensionImage);
 
-        vueReduite = VueOriginale.getVueOriginale();
+        vueOriginale = VueOriginale.getVueOriginale();
 
-        vueReduite.setImageOriginale(imageInitiale);
+        vueOriginale.setImageOriginale(imageInitiale);
 
-        vueReduite.setPreferredSize(dimensionImage);
-
-
-        tabbedPane.addTab("Vue Reduite", null, vueReduite,
-                "Vue Reduite");
+        vueOriginale.setPreferredSize(dimensionImage);
 
 
-        //******* Debut gui active 1 **********
+        tabbedPane.addTab("Vue Originale", null, vueOriginale,
+                "Vue Originale");
+
+
+        //******* Debut vue active 1 **********
         vueActive1 = new VueActive(imageInitiale);
 
         tabbedPane.addTab("Vue Active 1", null, vueActive1, "Vue Active 1");
-        //****** Fin gui active 1 ***********
+        //****** Fin vue active 1 ***********
 
-       //******* Debut gui active 2 **********
-
+        //******* Debut vue active 2 **********
         vueActive2 = new VueActive(imageInitiale);
 
         tabbedPane.addTab("Vue Active 2", null, vueActive2, "Vue Active 2");
-        // ******** Fin gui active 2 *******
+        // ******** Fin vue active 2 *******
 
 
         tabbedPane.addChangeListener(new ChangeListener() {
@@ -104,7 +131,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
                     vueActive2.setActive(true);
                     vueActive1.setActive(false);
                 }
-                if(tabbedPane.getSelectedComponent().equals(vueReduite)) {
+                if(tabbedPane.getSelectedComponent().equals(vueOriginale)) {
                     vueActive2.setActive(false);
                     vueActive1.setActive(false);
                 }
@@ -113,29 +140,45 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
         this.add(tabbedPane);
 
-
     }
 
+    /**
+     * Accesseur de la vue active 1
+     * @return la vue active 1
+     */
     public VueActive getVueActive1() {
         return vueActive1;
     }
 
+    /**
+     * Accesseur de la vue active 2
+     * @return la vue active 2
+     */
     public VueActive getVueActive2() {
         return vueActive2;
     }
 
+    /**
+     * Accesseur de la vue choisie/selectionnee par l'utilisateur.
+     * @return la vue selectionnee
+     */
     public VueActive getVueChoisie() {
         if(vueActive1.estActive())
             return vueActive1;
         else if(vueActive2.estActive())
             return vueActive2;
         else {
-            JOptionPane.showMessageDialog(null,"La gui reduite est presentement selectionnee\n" +
-                    "La gui active 1 a ete choisie alors...");
+            JOptionPane.showMessageDialog(null,"La Vue Originale est presentement selectionnee\n" +
+                    "La vue active 1 a ete choisie alors...");
             return vueActive1;
         }
     }
 
+    /**
+     * Methode qui permet d'update le panneau selon la nouvelle image ouverte par l'utilisateur.
+     * @param observable L'objet observe par PanneauPrincipal
+     * @param o
+     */
     @Override
     public void update(Observable observable, Object o) {
 
@@ -144,10 +187,10 @@ public class PanneauPrincipal extends JPanel implements Observer {
         Dimension nouvelleDimension = new Dimension(image.getTheImage().getWidth(null)+25,
                 image.getTheImage().getHeight(null)+25);
 
-        vueReduite.setSize(nouvelleDimension);
-        vueReduite.setMinimumSize(nouvelleDimension);
-        vueReduite.setMaximumSize(nouvelleDimension);
-        vueReduite.setPreferredSize(nouvelleDimension);
+        vueOriginale.setSize(nouvelleDimension);
+        vueOriginale.setMinimumSize(nouvelleDimension);
+        vueOriginale.setMaximumSize(nouvelleDimension);
+        vueOriginale.setPreferredSize(nouvelleDimension);
 
         tabbedPane.setSize(nouvelleDimension);
         tabbedPane.setMinimumSize(nouvelleDimension);
@@ -161,7 +204,7 @@ public class PanneauPrincipal extends JPanel implements Observer {
 
         tabbedPane.repaint();
 
-        vueReduite.repaint();
+        vueOriginale.repaint();
 
         this.repaint();
 

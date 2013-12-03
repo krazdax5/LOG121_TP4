@@ -25,7 +25,7 @@ public class Zoom implements InterfaceCommande {
 
     /**
      * Constructeur de la classe Zoom
-     * @param echelle
+     * @param echelle Echelle de la perspective de 1 a l'infini
      */
     public Zoom(int echelle){
         this.perspective = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive();

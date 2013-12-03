@@ -1,7 +1,8 @@
 package ets.commande;
 
 /**
- *
+ * Interface qui donne comme contrat d'implementer executer() et defaire()
+ * pour toutes ses sous-classes.
  *
  *          Historique des modifications
  ***************************************************
@@ -10,6 +11,13 @@ package ets.commande;
  */
 public interface InterfaceCommande {
 
+    /**
+     * Methode qui permet d'executer une commande
+     */
     public void executer();
+
+    /**
+     * Methode qui permet de defaire une commande deja effectuee.
+     */
     public void defaire();
 }

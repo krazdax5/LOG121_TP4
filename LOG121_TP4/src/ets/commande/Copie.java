@@ -49,9 +49,10 @@ public class Copie implements InterfaceCommande {
      * Constructeur de la classe Copie
      */
     public Copie() {
-        this.echelle = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive().getEchelle();
-        this.offsetX = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive().getCornerImageX();
-        this.offsetY = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive().getCornerImageY();
+        VueActive vueActiveTemp = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
+        this.echelle = vueActiveTemp.getPerspectiveVueActive().getEchelle();
+        this.offsetX = vueActiveTemp.getPerspectiveVueActive().getCornerImageX();
+        this.offsetY = vueActiveTemp.getPerspectiveVueActive().getCornerImageY();
     }
 
     /**

@@ -14,7 +14,9 @@ import java.util.Observer;
 
 
 /**
- *
+ * Classe VueActive qui permet de voir une perspective d'une image.
+ * Elle observe donc un objet de la classe Perspective et un objet
+ * de la classe ImageConcrete.
  *
  *          Historique des modifications
  ***************************************************
@@ -39,7 +41,7 @@ public class VueActive extends JPanel implements Observer {
 
     /**
      * Met à jour la gui active lorsque l'objet obsevable remarque un changement dans l'état de la gui active
-     * @param observable
+     * @param observable Objet observer
      * @param o
      */
     @Override
@@ -57,7 +59,7 @@ public class VueActive extends JPanel implements Observer {
 
     /**
      * Constructeur de la classe VueActive
-     * @param image
+     * @param image Image
      */
     public VueActive(ImageConcrete image){
         this.imageVueActive = image;
@@ -78,7 +80,7 @@ public class VueActive extends JPanel implements Observer {
 
             /**
              * Permet de mettre en mémoire la position lorsque la souris pèse sur la perspective
-             * @param mouseEvent
+             * @param mouseEvent Evenement de la souris
              */
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
@@ -90,7 +92,7 @@ public class VueActive extends JPanel implements Observer {
 
             /**
              * Change la position de la perspective lorsque la souris dragged l'image
-             * @param mouseEvent
+             * @param mouseEvent Evenement de la souris
              */
             @Override
             public void mouseDragged(MouseEvent mouseEvent) {
@@ -99,7 +101,7 @@ public class VueActive extends JPanel implements Observer {
 
             /**
              * Change l'échelle de la perspective lors du WheelMoved de la souris
-             * @param mouseWheelEvent
+             * @param mouseWheelEvent Mouvement de la roulette de la souris
              */
             @Override
             public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
@@ -115,7 +117,7 @@ public class VueActive extends JPanel implements Observer {
 
             /**
              * Setter permettant de placer la position de la perspective
-             * @param mouseEvent
+             * @param mouseEvent Evenement de la souris
              */
             public void setPosition(MouseEvent mouseEvent) {
                 Controleur.getControleur().deplacer(premierX+mouseEvent.getX(),premierY+mouseEvent.getY());
@@ -130,14 +132,14 @@ public class VueActive extends JPanel implements Observer {
 
     /**
      * Getter de la Perspective de la gui active
-     * @return
+     * @return la perspective actuelle de la vue active.
      */
     public Perspective getPerspectiveVueActive(){
         return perspective;
     }
     /**
      * Setter de la vueActive
-     * @param image
+     * @param image l'image concrete de la vue active.
      */
     public void setImage(ImageConcrete image){
         this.imageVueActive = image;
@@ -146,7 +148,7 @@ public class VueActive extends JPanel implements Observer {
 
     /**
      * Setter permettant de définir qu'elle gui est active
-     * @param estActive
+     * @param estActive Boolean demontrant si la vue est active
      */
     public void setActive(boolean estActive) {
         this.estActive = estActive;
@@ -154,7 +156,7 @@ public class VueActive extends JPanel implements Observer {
 
     /**
      * Rend la gui ayant appeller cette fonction active
-     * @return
+     * @return si la vue est active
      */
     public boolean estActive() {
         return estActive;
@@ -162,7 +164,7 @@ public class VueActive extends JPanel implements Observer {
 
     /**
      * Permet de dessiner la gui active par rapport à la perspective de celle-ci
-     * @param g
+     * @param g l'element graphic qui permet de dessiner les images.
      */
     public void paint(Graphics g){
         super.paint(g);

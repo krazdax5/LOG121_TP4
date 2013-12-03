@@ -16,8 +16,8 @@ public class Factory {
 
     /**
      * Fonction créant un nouveau Zoom grâce à l'appelle du constructeur
-     * @param echelle
-     * @return
+     * @param echelle l'incrementation de l'echelle
+     * @return le zoom cree avec les parametres
      */
     public Zoom createZoom(int echelle) {
         return new Zoom(echelle);
@@ -25,9 +25,9 @@ public class Factory {
 
     /**
      * Fonction créant un nouveau Deplacer grâce à l'appelle du constructeur
-     * @param offsetX
-     * @param offsetY
-     * @return
+     * @param offsetX Deplacement en X
+     * @param offsetY Deplacement en Y
+     * @return le deplacement cree avec les parametres
      */
     public Deplacer createDeplacer(int offsetX, int offsetY) {
         return new Deplacer(offsetX, offsetY);
@@ -35,7 +35,7 @@ public class Factory {
 
     /**
      * Fonction créant une nouvelle Copie grâce à l'appelle du constructeur
-     * @return
+     * @return la copie de perspective actuelle.
      */
     public Copie createCopie(){
         return new Copie();

@@ -18,14 +18,30 @@ import java.util.Observer;
  */
 public class FenetrePrincipale implements Runnable, Observer {
 
+    /**
+     * Attribut singleton qui refere a l'instance simple de la fenetre principale
+     */
     private static FenetrePrincipale instance;
 
-    JFrame application;
+    /**
+     * JFrame representant l'application même.
+     */
+    private JFrame application;
 
-    PanneauPrincipal panneauPrincipal;
+    /**
+     * Le panneau principal de l'application contenant toutes les vues.
+     */
+    private PanneauPrincipal panneauPrincipal;
 
+    /**
+     * Constructeur prive de l'application.
+     */
     private FenetrePrincipale() {}
 
+    /**
+     * Methode singleton qui retourne l'instance simple de la fenetre principale.
+     * @return l'instance simple de la fenetre principale.
+     */
     public static FenetrePrincipale getFenetrePrincipale() {
         if(instance == null)
             instance = new FenetrePrincipale();
@@ -34,6 +50,9 @@ public class FenetrePrincipale implements Runnable, Observer {
     }
 
 
+    /**
+     * Methode run qui permet de rouler l'application. Elle agit aussi en temps que constructeur de l'application.
+     */
     @Override
     public void run() {
 
@@ -64,6 +83,12 @@ public class FenetrePrincipale implements Runnable, Observer {
 
     }
 
+    /**
+     * Methode update qui permet a la fenetre principale de se mettre a jour
+     * lorsque l'image change.
+     * @param observable L'objet observe par la fenetre principale.
+     * @param o
+     */
     @Override
     public void update(Observable observable, Object o) {
         ImageConcrete image = (ImageConcrete) observable;

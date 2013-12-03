@@ -13,6 +13,12 @@ import java.io.*;
  */
 public class UtilitaireFichier {
 
+    /**
+     * Methode qui permet de recuperer une perspective et de la mettre comme etant
+     * la perspective de la vue choisie
+     * @param perspectiveALire la chaine de caractere correspondant au repertoire de la perspective a lire
+     * @return la perspective lu.
+     */
     public static Perspective recuperePerspective(String perspectiveALire) {
 
         try {
@@ -41,7 +47,11 @@ public class UtilitaireFichier {
         }
     }
 
-
+    /**
+     * Methode permet de sauvegarder une perspective.
+     * @param perspective La perspective a sauvegarder
+     * @param adresse l'adresse de la perspective a enregistrer
+     */
     public static void sauvegarderPerspective(Perspective perspective,String adresse) {
 
             File fileBin = new File(adresse);

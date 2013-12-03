@@ -4,7 +4,8 @@ import ets.Perspective;
 import ets.gui.PanneauPrincipal;
 
 /**
- *
+ * Classe qui permet de deplacer les offset en X et en Y de la perspective
+ * et, par conséquent, de déplacer la perspective de la vue.
  *
  *          Historique des modifications
  ***************************************************
@@ -36,8 +37,8 @@ public class Deplacer implements InterfaceCommande {
 
     /**
      * Constructeur de la classe Deplacer
-     * @param offsetX
-     * @param offsetY
+     * @param offsetX Delacement en x
+     * @param offsetY Decalement en y
      */
     public Deplacer(int offsetX, int offsetY) {
         this.perspective = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive();

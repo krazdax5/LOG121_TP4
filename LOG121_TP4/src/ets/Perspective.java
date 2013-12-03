@@ -37,8 +37,8 @@ public class Perspective extends Observable implements Serializable{
 
     /**
      * Change la valeur du coin de la perspective
-     * @param offsetX
-     * @param offsetY
+     * @param offsetX Decalement en x
+     * @param offsetY Decalement en y
      */
     public void setCornerPerspective(int offsetX, int offsetY){
         this.offsetX = offsetX;
@@ -66,7 +66,7 @@ public class Perspective extends Observable implements Serializable{
 
     /**
      * Cette méthode va mettre en gui active ce qui est inclus dans rectangleVue
-     * @param nouvelleEchelle
+     * @param nouvelleEchelle Nouvelle echelle de la perspecive
      */
     public void setEchelle(int nouvelleEchelle){
         if(nouvelleEchelle > 0) {
@@ -78,7 +78,7 @@ public class Perspective extends Observable implements Serializable{
 
     /**
      * Permet d'accéder à l'échelle actuelle de la perspective
-     * @return echelle
+     * @return echelle de la perspective
      */
     public int getEchelle(){
         return echelle;
