@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Observable;
 
 /**
- *
+ * Classe qui permet la gestion des perspectives sur les images.
  *
  *          Historique des modifications
  ***************************************************
@@ -14,15 +14,15 @@ import java.util.Observable;
 public class Perspective extends Observable implements Serializable{
 
     /**
-     * Deplacement en X de la perspective de la vue active par rapport à la perspective initiale de celle-ci.
+     * Deplacement en X de la perspective de la gui active par rapport à la perspective initiale de celle-ci.
      */
     private int offsetX;
     /**
-     * Deplacement en Y de la perspective de la vue active par rapport à la perspective initiale de celle-ci.
+     * Deplacement en Y de la perspective de la gui active par rapport à la perspective initiale de celle-ci.
      */
     private int offsetY;
     /**
-     * Echelle de la perspective de la vue active
+     * Echelle de la perspective de la gui active
      */
     private int echelle;
 
@@ -65,7 +65,7 @@ public class Perspective extends Observable implements Serializable{
     }
 
     /**
-     * Cette méthode va mettre en vue active ce qui est inclus dans rectangleVue
+     * Cette méthode va mettre en gui active ce qui est inclus dans rectangleVue
      * @param nouvelleEchelle
      */
     public void setEchelle(int nouvelleEchelle){
@@ -85,8 +85,9 @@ public class Perspective extends Observable implements Serializable{
     }
 
     /**
-     * Méthode toString qui affiche "perspective" lors de l'appel
-     * @return
+     * Methode qui retourne le type de l'objet sous forme de chaine de caracteres.
+     * Est utilise lors de la differenciation des objets observable recu en parametre.
+     * @return  le type de l'objet selon la classe
      */
     public String toString() {
         return "perspective";

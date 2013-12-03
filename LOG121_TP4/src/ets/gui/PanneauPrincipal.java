@@ -1,6 +1,6 @@
 package ets.gui;
 
-import ets.*;
+import ets.ImageConcrete;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -11,12 +11,15 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- *
+ * Classe qui s'occupe de la gestion du panneau principal de l'application
+ * Il est compose de plusieurs gui active et d'une gui reduite/originale.
  *
  *          Historique des modifications
  ***************************************************
- * @author
- * 2013-11-
+ * @author Mathieu Lachance LACM14059305
+ * 2013-11-21 : Ajout du JMenuMenuBar (classe interne MenuBar)
+ *              Ajout du sous-menu "Edition"
+ *              Ajout du sous-menu "Vue"
  */
 public class PanneauPrincipal extends JPanel implements Observer {
 
@@ -76,18 +79,18 @@ public class PanneauPrincipal extends JPanel implements Observer {
                 "Vue Reduite");
 
 
-        //******* Debut vue active 1 **********
+        //******* Debut gui active 1 **********
         vueActive1 = new VueActive(imageInitiale);
 
         tabbedPane.addTab("Vue Active 1", null, vueActive1, "Vue Active 1");
-        //****** Fin vue active 1 ***********
+        //****** Fin gui active 1 ***********
 
-       //******* Debut vue active 2 **********
+       //******* Debut gui active 2 **********
 
         vueActive2 = new VueActive(imageInitiale);
 
         tabbedPane.addTab("Vue Active 2", null, vueActive2, "Vue Active 2");
-        // ******** Fin vue active 2 *******
+        // ******** Fin gui active 2 *******
 
 
         tabbedPane.addChangeListener(new ChangeListener() {
@@ -127,8 +130,8 @@ public class PanneauPrincipal extends JPanel implements Observer {
         else if(vueActive2.estActive())
             return vueActive2;
         else {
-            JOptionPane.showMessageDialog(null,"La vue reduite est presentement selectionnee\n" +
-                    "La vue active 1 a ete choisie alors...");
+            JOptionPane.showMessageDialog(null,"La gui reduite est presentement selectionnee\n" +
+                    "La gui active 1 a ete choisie alors...");
             return vueActive1;
         }
     }

@@ -6,7 +6,7 @@ import ets.gui.PanneauPrincipal;
 import java.util.Stack;
 
 /**
- *
+ * Classe qui permet de faire la gestion des commandes en memoire.
  *
  *          Historique des modifications
  ***************************************************
@@ -24,22 +24,22 @@ public class GestionCommande {
     private Factory factory;
 
     /**
-     * Pile qui garde en memoire les commandes effectuees par l'utilisateur sur la vue active 1
+     * Pile qui garde en memoire les commandes effectuees par l'utilisateur sur la gui active 1
      */
     private Stack<InterfaceCommande> pileCommandes1;
 
     /**
-     * Pile qui garde en memoire les commandes effectuees par l'utilisateur sur la vue active 2
+     * Pile qui garde en memoire les commandes effectuees par l'utilisateur sur la gui active 2
      */
     private Stack<InterfaceCommande> pileCommandes2;
 
     /**
-     * Pile qui garde en memoire les commandes defaites par l'utilsateur sur la vue active 1
+     * Pile qui garde en memoire les commandes defaites par l'utilsateur sur la gui active 1
      */
     private Stack<InterfaceCommande> pileCommandesDefaites1;
 
     /**
-     * Pile qui garde en memoire les commandes defaites par l'utilsateur sur la vue active 2
+     * Pile qui garde en memoire les commandes defaites par l'utilsateur sur la gui active 2
      */
     private Stack<InterfaceCommande> pileCommandesDefaites2;
 
@@ -85,17 +85,20 @@ public class GestionCommande {
     public void defaireCommande() {
         if(PanneauPrincipal.getPanneauPrincipal().getVueChoisie() == PanneauPrincipal.getPanneauPrincipal().getVueActive1() && !pileCommandes1.isEmpty()) {
             InterfaceCommande commandeADefaire = pileCommandes1.pop();
-            commandeADefaire.executer();
+            commandeADefaire.defaire();
             this.ajouterCommandeDefaite(commandeADefaire);
         } else {
             if(!pileCommandes2.isEmpty()){
                 InterfaceCommande commandeADefaire = pileCommandes2.pop();
-                commandeADefaire.executer();
+                commandeADefaire.defaire();
                 this.ajouterCommandeDefaite(commandeADefaire);
             }
         }
     }
 
+    /**
+     * Methode qui permet de refaire une commande qui a ete defaite.
+     */
     public void refaireCommande() {
         if(PanneauPrincipal.getPanneauPrincipal().getVueChoisie() == PanneauPrincipal.getPanneauPrincipal().getVueActive1() && !pileCommandesDefaites1.isEmpty()) {
             InterfaceCommande commandeARefaire = pileCommandesDefaites1.pop();
@@ -110,6 +113,9 @@ public class GestionCommande {
         }
     }
 
+    /**
+     * Methode qui vide la pile de commandes de la gui choisie
+     */
     private void viderCommandeDefaites() {
         if(PanneauPrincipal.getPanneauPrincipal().getVueChoisie() == PanneauPrincipal.getPanneauPrincipal().getVueActive1()) {
             while(!pileCommandesDefaites1.empty())
@@ -124,9 +130,9 @@ public class GestionCommande {
      * Methode qui permet de de concerver en mémoire dans une pile la
      * perspective que l'on a quand on copie l'image
      */
-    public void ctrlC(Perspective perspective){
+    public void ctrlC(){
 
-        Copie ctrlC = factory.createCopie(perspective);
+        Copie ctrlC = factory.createCopie();
         if(!pileCopie.isEmpty())
             pileCopie.pop();
         pileCopie.push(ctrlC);
@@ -141,18 +147,33 @@ public class GestionCommande {
         if(!pileCopie.isEmpty()) {
             Copie ctrlV = pileCopie.peek();
             ctrlV.executer();
-            pileCommandes1.push(pileCopie.peek());
+            if(PanneauPrincipal.getPanneauPrincipal().getVueActive1() == PanneauPrincipal.getPanneauPrincipal().getVueChoisie())
+                pileCommandes1.push(pileCopie.peek());
+            if(PanneauPrincipal.getPanneauPrincipal().getVueActive2() == PanneauPrincipal.getPanneauPrincipal().getVueChoisie())
+                pileCommandes2.push(pileCopie.peek());
+
+            viderCommandeDefaites();
         }
     }
 
-    public void zommer(Perspective perspective, int echelle){
-        Zoom zoom = factory.createZoom(perspective, echelle);
+    /**
+     * Methode qui permet la creation et l'execution d'une commande zoom.
+     * @param echelle   La nouvelle echelle de la perspective.
+     */
+    public void zommer(int echelle){
+        Zoom zoom = factory.createZoom(echelle);
         zoom.executer();
         this.ajouterCommande(zoom);
         this.viderCommandeDefaites();
     }
-    public void deplacer(Perspective perspective, int offsetX, int offsetY) {
-        Deplacer deplace = factory.createDeplacer(perspective, offsetX, offsetY);
+
+    /**
+     * Methode qui permet la creation et l'execution d'une commande deplacer.
+     * @param offsetX   Le nouvel offset en X de la perspective
+     * @param offsetY   Le nouvel offset en Y de la perspective
+     */
+    public void deplacer(int offsetX, int offsetY) {
+        Deplacer deplace = factory.createDeplacer(offsetX, offsetY);
         deplace.executer();
         this.ajouterCommande(deplace);
         this.viderCommandeDefaites();

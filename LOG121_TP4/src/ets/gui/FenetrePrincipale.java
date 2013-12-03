@@ -1,13 +1,10 @@
 package ets.gui;
 
 
-import ets.*;
+import ets.ImageConcrete;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -18,10 +15,6 @@ import java.util.Observer;
  ***************************************************
  * @author Mathieu Lachance
  * 2013-11-19 : Début de l'implémentation
- *              Ajout des classes main() et run()
- *              Ajout du JMenuMenuBar (classe interne MenuBar)
- * 2013-11-21 : Ajout du sous-menu "Edition"
- *              Ajout du sous-menu "Vue"
  */
 public class FenetrePrincipale implements Runnable, Observer {
 

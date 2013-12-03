@@ -3,6 +3,8 @@ package ets;
 
 import ets.gui.FenetrePrincipale;
 import ets.gui.PanneauPrincipal;
+import ets.gui.VueActive;
+import ets.gui.VueOriginale;
 
 import java.io.File;
 
@@ -11,13 +13,13 @@ import java.io.File;
  *
  *          Historique des modifications
  ***************************************************
- * @author
- * 2013-11-
+ * @author Mathieu Lachance LACM14059305
+ * 2013-11-25 : Implementation de la classe
  */
-public class Controlleur {
+public class Controleur {
 
 
-    private static Controlleur instance;
+    private static Controleur instance;
 
     private PanneauPrincipal panneauPrincipal;
     private GestionCommande gestionnaire;
@@ -33,7 +35,7 @@ public class Controlleur {
         threadApplication.start();
     }
 
-    private Controlleur() {
+    private Controleur() {
         panneauPrincipal = PanneauPrincipal.getPanneauPrincipal();
 
         image = ImageConcrete.createImage(null);
@@ -47,9 +49,9 @@ public class Controlleur {
         gestionnaire = new GestionCommande();
     }
 
-    public static Controlleur getControlleur() {
+    public static Controleur getControleur() {
         if(instance == null)
-            instance = new Controlleur();
+            instance = new Controleur();
 
         return instance;
     }
@@ -69,16 +71,16 @@ public class Controlleur {
         panneauPrincipal.repaint();
     }
 
-    public void zoomer(Perspective perspective, int echelle) {
-        gestionnaire.zommer(perspective, echelle);
+    public void zoomer(int echelle) {
+        gestionnaire.zommer(echelle);
     }
 
-    public void deplacer(Perspective perspective, int offsetX, int offsetY) {
-        gestionnaire.deplacer(perspective, offsetX, offsetY);
+    public void deplacer(int offsetX, int offsetY) {
+        gestionnaire.deplacer(offsetX, offsetY);
     }
 
-    public void ctrlC(Perspective perspective){
-        gestionnaire.ctrlC(perspective);
+    public void ctrlC(){
+        gestionnaire.ctrlC();
     }
 
     public void ctrlV(){

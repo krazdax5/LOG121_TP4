@@ -1,4 +1,8 @@
-package ets;
+package ets.gui;
+
+import ets.Controleur;
+import ets.ImageConcrete;
+import ets.Perspective;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,21 +24,21 @@ import java.util.Observer;
 public class VueActive extends JPanel implements Observer {
 
     /**
-     * Boolean permettant de connaître quel vue est active.
-     * Si le boolean est à "true" la vue est active
+     * Boolean permettant de connaître quel gui est active.
+     * Si le boolean est à "true" la gui est active
      */
     private boolean estActive;
     /**
-     * Image de la vue active
+     * Image de la gui active
      */
     private ImageConcrete imageVueActive;
     /**
-     * Perspective de la vue active
+     * Perspective de la gui active
      */
     private Perspective perspective;
 
     /**
-     * Met à jour la vue active lorsque l'objet obsevable remarque un changement dans l'état de la vue active
+     * Met à jour la gui active lorsque l'objet obsevable remarque un changement dans l'état de la gui active
      * @param observable
      * @param o
      */
@@ -99,7 +103,7 @@ public class VueActive extends JPanel implements Observer {
              */
             @Override
             public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
-                Controlleur.getControlleur().zoomer(perspective, mouseWheelEvent.getWheelRotation());
+                Controleur.getControleur().zoomer(mouseWheelEvent.getWheelRotation());
 
             }
 
@@ -114,7 +118,7 @@ public class VueActive extends JPanel implements Observer {
              * @param mouseEvent
              */
             public void setPosition(MouseEvent mouseEvent) {
-                Controlleur.getControlleur().deplacer(perspective,premierX+mouseEvent.getX(),premierY+mouseEvent.getY());
+                Controleur.getControleur().deplacer(premierX+mouseEvent.getX(),premierY+mouseEvent.getY());
                 repaint();
             }
         };
@@ -125,7 +129,7 @@ public class VueActive extends JPanel implements Observer {
     }
 
     /**
-     * Getter de la Perspective de la vue active
+     * Getter de la Perspective de la gui active
      * @return
      */
     public Perspective getPerspectiveVueActive(){
@@ -141,7 +145,7 @@ public class VueActive extends JPanel implements Observer {
     }
 
     /**
-     * Setter permettant de définir qu'elle vue est active
+     * Setter permettant de définir qu'elle gui est active
      * @param estActive
      */
     public void setActive(boolean estActive) {
@@ -149,7 +153,7 @@ public class VueActive extends JPanel implements Observer {
     }
 
     /**
-     * Rend la vue ayant appeller cette fonction active
+     * Rend la gui ayant appeller cette fonction active
      * @return
      */
     public boolean estActive() {
@@ -157,7 +161,7 @@ public class VueActive extends JPanel implements Observer {
     }
 
     /**
-     * Permet de dessiner la vue active par rapport à la perspective de celle-ci
+     * Permet de dessiner la gui active par rapport à la perspective de celle-ci
      * @param g
      */
     public void paint(Graphics g){

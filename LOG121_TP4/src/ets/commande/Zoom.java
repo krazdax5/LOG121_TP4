@@ -4,17 +4,18 @@ import ets.Perspective;
 import ets.gui.PanneauPrincipal;
 
 /**
- *
+ * Commande Zoom : effectue un zoom selon l'echelle envoyee en parametre
+ *                 sur la gui choisie par l'utilisateur.
  *
  *          Historique des modifications
  ***************************************************
  * @author Jacob Marcil
- * 2013-12-02
+ * 2013-11-29
  */
 public class Zoom implements InterfaceCommande {
 
     /**
-     * Perspective de la vue
+     * Perspective de la gui
      */
     private Perspective perspective;
     /**
@@ -24,16 +25,15 @@ public class Zoom implements InterfaceCommande {
 
     /**
      * Constructeur de la classe Zoom
-     * @param perspective
      * @param echelle
      */
-    public Zoom(Perspective perspective,int echelle){
-        this.perspective = perspective;
+    public Zoom(int echelle){
+        this.perspective = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive();
         this.echelle = echelle;
     }
 
     /**
-     * Fonction permettant d'augmenter l'echelle de la perspective de la vue active de 1
+     * Fonction permettant d'augmenter l'echelle de la perspective de la gui active de 1
      */
     @Override
     public void executer() {
@@ -42,7 +42,7 @@ public class Zoom implements InterfaceCommande {
     }
 
     /**
-     * Fonction permettant de diminuer l'echelle de la perspective de la vue active de 1
+     * Fonction permettant de diminuer l'echelle de la perspective de la gui active de 1
      */
     @Override
     public void defaire() {

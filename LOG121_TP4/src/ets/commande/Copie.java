@@ -1,70 +1,81 @@
 package ets.commande;
 
-import ets.Perspective;
-import ets.VueActive;
+import ets.gui.VueActive;
 import ets.gui.PanneauPrincipal;
 
 /**
- *
+ * Commande Copier :    le constructeur garde en memoire la perspective a coller.
+*                       la methode executer fait la commande coller
+ *                      la methode defaire defait la commande.
  *
  *          Historique des modifications
  ***************************************************
- * @author
- * 2013-11-
+ * @author Mathieu Lachance
+ * 2013-11-25
  */
 public class Copie implements InterfaceCommande {
 
     /**
      * Vue active
      */
-    VueActive vueActive;
+    private VueActive vueActive;
     /**
-     * Perspective initiale de la vue active
+     * Echelle initiale de la gui active
      */
-    private Perspective perspectiveInitiale;
+    private int echelleInitiale;
     /**
-     * Entier représentant l'echelle de la perspective active
+     * Offset en X initial de la gui active
+     */
+    private int offsetXInitial;
+    /**
+     * Offset en Y initial de la gui active
+     */
+    private int offsetYInitial;
+    /**
+     * Entier représentant l'echelle de la perspective a copier
      */
     private int echelle;
     /**
-     * Entier représentant le décalage en X de la perspective par rapport a la perspective active
+     * Offset en X de la perspective a copier
      */
     private int offsetX;
     /**
-     * Entier représentant le décalage en Y de la perspective par rapport a la perspective active
+     * Offset en Y de la perspective a copier
      */
     private int offsetY;
 
+
     /**
      * Constructeur de la classe Copie
-     * @param perspective
      */
-    public Copie(Perspective perspective) {
-        this.perspectiveInitiale = perspective;
-        this.echelle = perspective.getEchelle();
-        this.offsetX = perspective.getCornerImageX();
-        this.offsetY = perspective.getCornerImageY();
+    public Copie() {
+        this.echelle = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive().getEchelle();
+        this.offsetX = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive().getCornerImageX();
+        this.offsetY = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive().getCornerImageY();
     }
 
     /**
-     * Fonction permettant d'enregistrer la perspective de la vue active
+     * Fonction permettant d'executer la fonction coller sur la gui chosie
      */
     @Override
     public void executer() {
         this.vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
-        vueActive.getPerspectiveVueActive().setEchelle(echelle);
-        vueActive.getPerspectiveVueActive().setCornerPerspective(offsetX, offsetY);
-        vueActive.repaint();
+        this.echelleInitiale = vueActive.getPerspectiveVueActive().getEchelle();
+        this.offsetXInitial = vueActive.getPerspectiveVueActive().getCornerImageX();
+        this.offsetYInitial = vueActive.getPerspectiveVueActive().getCornerImageY();
+        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive().setEchelle(echelle);
+        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive().setCornerPerspective(offsetX, offsetY);
+        PanneauPrincipal.getPanneauPrincipal().getVueChoisie().repaint();
     }
 
     /**
-     * Fonction permettant de revenir à la perspective antérieur de la vue active
+     * Fonction permettant de revenir à la perspective antérieure de la gui active
      */
     @Override
     public void defaire() {
-        vueActive.getPerspectiveVueActive().setEchelle(perspectiveInitiale.getEchelle());
-        vueActive.getPerspectiveVueActive().setCornerPerspective(perspectiveInitiale.getCornerImageX(),
-                perspectiveInitiale.getCornerImageY());
+        vueActive.getPerspectiveVueActive().setEchelle(echelleInitiale);
+        vueActive.getPerspectiveVueActive().setCornerPerspective(offsetXInitial,
+                offsetYInitial);
         vueActive.repaint();
     }
 }

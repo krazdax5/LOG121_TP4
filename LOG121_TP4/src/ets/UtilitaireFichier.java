@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.io.*;
 
 /**
- *
+ * Classe qui permet la manipulation de fichier.
  *
  *          Historique des modifications
  ***************************************************
- * @author
- * 2013-11-
+ * @author Mathieu Lachance LACM14059305
+ * 2013-12-01 : Creation et implementation de la classe
  */
 public class UtilitaireFichier {
 

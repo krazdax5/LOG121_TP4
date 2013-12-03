@@ -8,13 +8,13 @@ import ets.gui.PanneauPrincipal;
  *
  *          Historique des modifications
  ***************************************************
- * @author
- * 2013-11-
+ * @author Jacob Marcil
+ * 2013-11-26
  */
 public class Deplacer implements InterfaceCommande {
 
     /**
-     * Perspective actuelle de la vue active
+     * Perspective actuelle de la gui active
      */
     private Perspective perspective;
     /**
@@ -36,12 +36,11 @@ public class Deplacer implements InterfaceCommande {
 
     /**
      * Constructeur de la classe Deplacer
-     * @param perspective
      * @param offsetX
      * @param offsetY
      */
-    public Deplacer(Perspective perspective, int offsetX, int offsetY) {
-        this.perspective = perspective;
+    public Deplacer(int offsetX, int offsetY) {
+        this.perspective = PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive();
         this.offsetXInitial = perspective.getCornerImageX();
         this.offsetYInitial = perspective.getCornerImageY();
         this.offsetX = offsetX;
@@ -49,7 +48,7 @@ public class Deplacer implements InterfaceCommande {
     }
 
     /**
-     * Fonction permettant de changer les offsets de la perspective de la vue actives
+     * Fonction permettant de changer les offsets de la perspective de la gui actives
      */
     @Override
     public void executer() {
@@ -57,7 +56,7 @@ public class Deplacer implements InterfaceCommande {
 
     }
     /**
-     * Fonction permettant de revenir à la position antérieur au dernier déplacement de la perspective de la vue active
+     * Fonction permettant de revenir à la position antérieur au dernier déplacement de la perspective de la gui active
      */
     @Override
     public void defaire() {

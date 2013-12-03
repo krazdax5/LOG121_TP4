@@ -1,4 +1,6 @@
-package ets;
+package ets.gui;
+
+import ets.ImageConcrete;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +21,7 @@ import java.util.Observer;
 public class VueOriginale extends JPanel implements Observer {
 
     /**
-     * Image Concrete de la vue originale
+     * Image Concrete de la gui originale
      */
     private ImageConcrete imageOriginale;
     /**
@@ -32,7 +34,7 @@ public class VueOriginale extends JPanel implements Observer {
     private int hauteur;
 
     /**
-     * Instance de la vue original
+     * Instance de la gui original
      */
     public static VueOriginale instance;
 
@@ -46,7 +48,7 @@ public class VueOriginale extends JPanel implements Observer {
     private VueOriginale(ImageConcrete image, int largeur, int hauteur){
 
         /**
-         * Image de la vue original
+         * Image de la gui original
          */
         this.imageOriginale = image;
         this.largeur = largeur;
@@ -55,7 +57,7 @@ public class VueOriginale extends JPanel implements Observer {
     }
 
     /**
-     * Getter de la vue originale
+     * Getter de la gui originale
      * @return
      */
     public static VueOriginale getVueOriginale() {
@@ -96,7 +98,7 @@ public class VueOriginale extends JPanel implements Observer {
     }
 
     /**
-     * Permet d'afficher les changements s'il y en a qui surviennent sur la vue original
+     * Permet d'afficher les changements s'il y en a qui surviennent sur la gui original
      * @param observable
      * @param o
      */

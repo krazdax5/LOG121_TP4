@@ -1,8 +1,7 @@
 package ets.gui;
 
-import ets.Controlleur;
+import ets.Controleur;
 import ets.UtilitaireFichier;
-import ets.VueActive;
 
 import javax.activation.MimetypesFileTypeMap;
 import javax.swing.*;
@@ -57,7 +56,7 @@ public class MenuBar extends JMenuBar {
                         String mimetype= new MimetypesFileTypeMap().getContentType(nouvelleImage);
                         String type = mimetype.split("/")[0];
                         if(type.equals("image")){
-                            Controlleur.getControlleur().changerImage(nouvelleImage);
+                            Controleur.getControleur().changerImage(nouvelleImage);
                             isAnImage = true;
                         } else {
                             JOptionPane.showMessageDialog(null, "Ceci n'est pas une image veuillez recommencer.");
@@ -82,7 +81,7 @@ public class MenuBar extends JMenuBar {
 
                 if (valeurRetour == JFileChooser.APPROVE_OPTION) {
                     String perspectiveChoisie = fcOpen.getSelectedFile().getAbsolutePath();
-                    Controlleur.getControlleur().changerPerspective(perspectiveChoisie);
+                    Controleur.getControleur().changerPerspective(perspectiveChoisie);
                 }
             }
         });
@@ -138,7 +137,7 @@ public class MenuBar extends JMenuBar {
         defaire.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().defaire();
+                Controleur.getControleur().defaire();
             }
         });
 
@@ -152,7 +151,7 @@ public class MenuBar extends JMenuBar {
         refaire.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().refaire();
+                Controleur.getControleur().refaire();
             }
         });
 
@@ -168,7 +167,7 @@ public class MenuBar extends JMenuBar {
         copier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().ctrlC(PanneauPrincipal.getPanneauPrincipal().getVueChoisie().getPerspectiveVueActive());
+                Controleur.getControleur().ctrlC();
             }
         });
 
@@ -182,7 +181,7 @@ public class MenuBar extends JMenuBar {
         coller.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().ctrlV();
+                Controleur.getControleur().ctrlV();
             }
         });
 
@@ -204,7 +203,7 @@ public class MenuBar extends JMenuBar {
         zoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Controlleur.getControlleur().zoomer(PanneauPrincipal.getPanneauPrincipal().vueActive1.getPerspectiveVueActive(),1);
+                Controleur.getControleur().zoomer(1);
             }
         });
 
@@ -234,8 +233,7 @@ public class MenuBar extends JMenuBar {
                         VueActive vueActive = PanneauPrincipal.getPanneauPrincipal().getVueChoisie();
                         int ancienOffsetX = vueActive.getPerspectiveVueActive().getCornerImageX();
                         int ancienOffsetY = vueActive.getPerspectiveVueActive().getCornerImageY();
-                        Controlleur.getControlleur().deplacer(vueActive.getPerspectiveVueActive(),
-                                ancienOffsetX + nouveauOffsetX, ancienOffsetY + nouveauOffsetY);
+                        Controleur.getControleur().deplacer(ancienOffsetX + nouveauOffsetX, ancienOffsetY + nouveauOffsetY);
                     } catch(NumberFormatException exception){
                         JOptionPane.showMessageDialog(null,"Veuillez entrer un nombre S.V.P.");
                         actionPerformed(e);

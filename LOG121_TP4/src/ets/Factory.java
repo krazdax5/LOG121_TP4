@@ -5,42 +5,39 @@ import ets.commande.Deplacer;
 import ets.commande.Zoom;
 
 /**
- *
+ * Classe qui permet la creation des commandes. Met en oeuvre le patron Factory.
  *
  *          Historique des modifications
  ***************************************************
- * @author
- * 2013-11-
+ * @author Mathieu Lachance LACM14059305
+ * 2013-11-25 Implementation de la classe
  */
 public class Factory {
 
     /**
      * Fonction créant un nouveau Zoom grâce à l'appelle du constructeur
-     * @param perspective
      * @param echelle
      * @return
      */
-    public Zoom createZoom(Perspective perspective, int echelle) {
-        return new Zoom(perspective, echelle);
+    public Zoom createZoom(int echelle) {
+        return new Zoom(echelle);
     }
 
     /**
      * Fonction créant un nouveau Deplacer grâce à l'appelle du constructeur
-     * @param perspective
      * @param offsetX
      * @param offsetY
      * @return
      */
-    public Deplacer createDeplacer(Perspective perspective, int offsetX, int offsetY) {
-        return new Deplacer(perspective,offsetX, offsetY);
+    public Deplacer createDeplacer(int offsetX, int offsetY) {
+        return new Deplacer(offsetX, offsetY);
     }
 
     /**
      * Fonction créant une nouvelle Copie grâce à l'appelle du constructeur
-     * @param perspective
      * @return
      */
-    public Copie createCopie(Perspective perspective){
-        return new Copie(perspective);
+    public Copie createCopie(){
+        return new Copie();
     }
 }

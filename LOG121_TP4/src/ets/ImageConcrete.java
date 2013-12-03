@@ -7,7 +7,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * Patron : NullObject
+ * Classe qui garde en memoire l'image utilisee par l'application.
+ * Est observee par la fenetre principale, le panneau principal et toutes les vues.
  *
  *          Historique des modifications
  ***************************************************
@@ -18,7 +19,10 @@ import javax.swing.*;
  */
 public class ImageConcrete extends Observable {
 
-    private Image theImage = null;
+    /**
+     * Attribut privee de l'image.
+     */
+    private Image theImage;
 
     /**
      * Simple accesseur d'une image.
@@ -29,7 +33,7 @@ public class ImageConcrete extends Observable {
     }
 
     /**
-     * M&eactue;thode priv&eacute;
+     * Constructeur prive
      */
     private ImageConcrete(File sourceImage){
         if(sourceImage != null) {
@@ -41,16 +45,30 @@ public class ImageConcrete extends Observable {
         }
     }
 
+    /**
+     * Methode fabrique qui permet la creation d'une image.
+     * @param sourceImage Le fichier contenant l'image
+     * @return  La nouvelle instance d'ImageConcrete
+     */
     public static ImageConcrete createImage(File sourceImage) {
         return new ImageConcrete(sourceImage);
     }
 
+    /**
+     * Mutateur de l'image selon un fichier recu en parametre
+     * @param sourceImage   Le fichier contenant l'image.
+     */
     public void setImage(File sourceImage) {
         theImage = new ImageConcrete(sourceImage).getTheImage();
         this.setChanged();
         this.notifyObservers();
     }
 
+    /**
+     * Methode qui retourne le type de l'objet sous forme de chaine de caracteres.
+     * Est utilise lors de la differenciation des objets observable recu en parametre.
+     * @return  le type de l'objet selon la classe
+     */
     public String toString() {
         return "image";
     }
